@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: white;
+    --foreground: black;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+    font-family: 'Poppins', sans-serif;
+  
+}
+.group:hover {
+  height: 450px;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 320px) {
+  .custom-small-text {
+    font-size: 12px; 
+  }
+}
+
+html {
+  font-size: 14px; /* Kích thước cơ bản */
+}
+
+@media (min-width: 640px) { /* sm */
+  html {
+      font-size: 16px; /* 1rem = 18px */
+  }
+}
+
+@media (min-width: 768px) { /* md */
+  html {
+      font-size: 18px; /* 1rem = 20px */
+  }
+}
+@media (min-width: 1024px) { /* lg */
+  html {
+      font-size: 18px; /* 1rem = 18px */
+  }
+}
+
+@media (min-width: 1280px) { /* lg */
+  html {
+      font-size: 20px; /* 1rem = 20px */
+  }
+}
+
+:root{
+  --background-color : #222326;
+  --primary-color: #bd8c62
+}
