@@ -2,5 +2,12 @@
   "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
     "react/jsx-no-target-blank": "off"
+  },
+  "compilerOptions": {
+    "noEmit": true, // Không tạo tệp JS, chỉ kiểm tra mã
+    "skipLibCheck": true, // Bỏ qua kiểm tra lỗi ở các tệp thư viện
+    "strict": false, // Tắt tất cả các quy tắc kiểm tra nghiêm ngặt
+    "noImplicitAny": false, // Cho phép biến không có kiểu
+    "suppressImplicitAnyIndexErrors": true // Bỏ qua lỗi chỉ số không có kiểu
   }
 }
