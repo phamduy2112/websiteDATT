@@ -1,10 +1,11 @@
 import React from 'react';
-import { FaShippingFast, FaCreditCard, FaUndoAlt } from 'react-icons/fa'; // Example icons
+import { FaShippingFast, FaCreditCard, FaUndoAlt } from 'react-icons/fa';
 
 const FeatureSection = () => {
   return (
-    <div className="w-[80%] mx-auto py-6">
-      <div className="border rounded-lg p-6 shadow-lg flex justify-around items-center">
+    <div className="2xl:w-[80%] m-auto py-6 sxm:w-[95%] md:w-[90%]">
+      <div className="border rounded-lg p-6 shadow-lg grid gap-8 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+        
         {/* Free Shipping */}
         <div className="flex flex-col items-center">
           <div className="bg-blue-500 text-white rounded-full p-4 mb-3">
@@ -38,6 +39,7 @@ const FeatureSection = () => {
           <h3 className="font-bold">Easy Returns</h3>
           <p className="text-gray-500 text-sm">Shop With Confidence</p>
         </div>
+
       </div>
     </div>
   );

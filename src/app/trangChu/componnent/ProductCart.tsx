@@ -100,13 +100,13 @@ const ProductCard = () => {
     },
   ];
   return (
-    <div className='grid grid-cols-5 gap-[1rem]'>
- 
-  {products.map((product) => (
-   <ProductItem product={product} key={product.id}/>
-  ))}
-
+<div className="flex justify-center">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-[1rem]">
+        {products.map((product) => (
+            <ProductItem product={product} key={product.id} />
+        ))}
     </div>
+</div>
   );
 };
 

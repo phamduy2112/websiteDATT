@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <nav className="bg-blue-600 py-3 h-[50px]">
       <div className="w-[80%] mx-auto flex justify-center">
-        <ul className="flex space-x-6 text-white uppercase text-sm font-medium">
+        <ul className="flex space-x-6 text-white text-sm font-medium">
           <li><Link href="/">Home</Link></li>
           <li
             onMouseEnter={handleMouseEnter}
@@ -24,7 +24,7 @@ const Navbar = () => {
             className="relative"
           >
             <button className="focus:outline-none">
-              Sản phẩm
+              Page
             </button>
             {isProductHovered && (
               <div
@@ -39,13 +39,17 @@ const Navbar = () => {
                         <h3 className="text-[.9rem] text-[#7500CF] mb-[.1rem] font-semibold">
                           Inner Pages
                         </h3>
-                        {['Iphone 1', 'Iphone 2', 'Iphone 3', 'Iphone 4'].map((item, index) => (
-                          <li key={index} className="w-[100%] py-1">
-                            <Link href="" className="text-[.8rem] text-black">
-                              {item}
-                            </Link>
-                          </li>
-                        ))}
+                        <li className="w-[100%] py-1">
+                          <Link href="/404" className="text-[.8rem] text-black">
+                            404 Page
+                          </Link>
+                        </li>
+                        <li className="w-[100%] py-1">
+                          <Link href="/comingsoon" className="text-[.8rem] text-black">
+                            Comming soon
+                          </Link>
+                        </li>
+                      
                       </div>
 
                       <div className="text-black">
@@ -60,6 +64,16 @@ const Navbar = () => {
                         <li className="w-[100%] py-1">
                           <Link href="/checkout" className="text-[.8rem] text-black">
                             Checkout Page
+                          </Link>
+                        </li>
+                        <li className="w-[100%] py-1">
+                          <Link href="/orderTrack" className="text-[.8rem] text-black">
+                            Order Page
+                          </Link>
+                        </li>
+                        <li className="w-[100%] py-1">
+                          <Link href="/orderSuccess" className="text-[.8rem] text-black">
+                            Order Success Page
                           </Link>
                         </li>
                       </div>
@@ -90,10 +104,10 @@ const Navbar = () => {
               </div>
             )}
           </li>
-          <li><a href="#" className="hover:underline">About</a></li>
-          <li><a href="/listProduct" className="hover:underline">Shop</a></li>
-          <li><a href="#" className="hover:underline">Blog</a></li>
-          <li><a href="#" className="hover:underline">Contact</a></li>
+          <li><Link href="/gioithieu" className="hover:underline">About</Link></li>
+          <li><Link href="/listProduct" className="hover:underline">Shop</Link></li>
+          <li><Link href="" className="hover:underline">Blog</Link></li>
+          <li><Link href="/lienhe" className="hover:underline">Contact</Link></li>
         </ul>
       </div>
     </nav>

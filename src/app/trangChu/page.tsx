@@ -9,7 +9,7 @@ function TrangChu() {
 
     <div>
         <Banner></Banner>
-        <div className="w-[80%] m-auto">
+        <div className="2xl:w-[80%] mx-auto sxm:w-[95%] md:-[90%]">
             <div className="flex justify-between">
             <div className="w-[49%] h-[15rem]">
                 <img
@@ -48,11 +48,11 @@ function TrangChu() {
             </div>
           
         </div>
-        <div className="w-[80%] m-auto">
+        <div className="2xl:w-[80%] m-auto py-4 sxm:w-[95%] md:-[90%]">
             <h5 className="pt-4 pb-3 text-blue-500 text-center text-[1.2rem]">Những sản phẩm dành cho bạn</h5>
          <ProductCard/>
         </div>
-       <div className="w-[100%] my-4">
+        <div className="2xl:w-[80%] m-auto py-4 sxm:w-[95%] md:-[90%]">
         <img 
         className="w-[100%]"
         src="https://cdn.mobilecity.vn/mobilecity-vn/images/2023/10/w800/29-cu-cap-sac-xiaomi-tong-hop.jpg.webp" alt="" />

@@ -41,8 +41,9 @@ const BlogSection = () => {
       </div>
 
       {/* Blog Cards Container */}
-      <div className="flex justify-between space-x-6">
-        <BlogCard
+      <div className="flex justify-center space-x-6">
+    <div className='grid lg:grid-cols-2 2xl:grid-cols-3 gap-[1rem]'>
+    <BlogCard
           image="placeholder"
           date="27, Jun 2030"
           author="Wild Nick"
@@ -63,6 +64,7 @@ const BlogSection = () => {
           title="The Ultimate Guide to Smart Products"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore."
         />
+    </div>
       </div>
     </div>
   );
