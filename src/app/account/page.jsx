@@ -1,201 +1,113 @@
-'use client';
+'use client'
+import { useState } from 'react';
+import AccountInfo from './Commponent/AccountInfo';
+import Order from './Commponent/Order';
 
-import React, { useState } from 'react';
+export default function AccountPage() {
+  const items = [
+    { id: 'accountInfo', label: 'Thông tin tài khoản' },
+    { id: 'orders', label: 'Quản lý đơn hàng' },
+    { id: 'notifications', label: 'Thông báo' },
+    { id: 'discounts', label: 'Mã giảm giá' },
+    { id: 'membership', label: 'Membership' },
+    { id: 'viewedProducts', label: 'Sản phẩm đã xem' },
+  ];
+ 
 
-const AccountPage = () => {
-  const [activeTab, setActiveTab] = useState('DASHBOARD');
-// đẩy code 2
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
+  const [selectedItem, setSelectedItem] = useState('accountInfo');
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    // Add any additional logic for when an item is clicked
   };
 
-  const orders = [
-    { id: 1, date: 'May 10, 2018', status: 'Completed', total: '$25.00', items: 1 },
-    { id: 2, date: 'June 15, 2018', status: 'Processing', total: '$50.00', items: 2 },
-  ];
+  const renderComponent = () => {
+    switch (selectedItem) {
+      case 'accountInfo':
+        return <AccountInfo />;
+      case 'orders':
+        return <Order />;
+      // Add cases for other components...
+      default:
+        return <AccountInfo />;
+    }
+  };
+  
 
-  const downloads = [
-    { id: 1, product: 'Product 1', date: 'May 10, 2018', expires: 'Expired', link: '#' },
-    { id: 2, product: 'Product 2', date: 'June 15, 2018', expires: 'Never', link: '#' },
-  ];
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission (e.g., send data to the server)
+  };
+
+  
 
   return (
-    <div className="min-h-screen bg-white flex justify-center items-start">
-      <div className="w-4/5 bg-white rounded-lg p-10 ">
-        <div className="flex">
-          <div className="flex-col space-y-4 mr-8">
-            <div
-              className={`bg-black text-white text-sm p-2 cursor-pointer ${
-                activeTab === 'DASHBOARD' ? 'bg-blue-500' : ''
-              }`}
-              onClick={() => handleTabClick('DASHBOARD')}
-            >
-              DASHBOARD
-            </div>
-            <div
-              className={`bg-black text-white text-sm p-2 cursor-pointer ${
-                activeTab === 'ORDERS' ? 'bg-blue-500' : ''
-              }`}
-              onClick={() => handleTabClick('ORDERS')}
-            >
-              ORDERS
-            </div>
-            <div
-              className={`bg-black text-white text-sm p-2 cursor-pointer ${
-                activeTab === 'DOWNLOADS' ? 'bg-blue-500' : ''
-              }`}
-              onClick={() => handleTabClick('DOWNLOADS')}
-            >
-              DOWNLOADS
-            </div>
-            <div
-              className={`bg-black text-white text-sm p-2 cursor-pointer ${
-                activeTab === 'ADDRESSES' ? 'bg-blue-500' : ''
-              }`}
-              onClick={() => handleTabClick('ADDRESSES')}
-            >
-              ADDRESSES
-            </div>
-            <div
-              className={`bg-black text-white text-sm p-2 cursor-pointer ${
-                activeTab === 'ACCOUNT DETAILS' ? 'bg-blue-500' : ''
-              }`}
-              onClick={() => handleTabClick('ACCOUNT DETAILS')}
-            >
-              ACCOUNT DETAILS
-            </div>
-          </div>
-          <div className="flex-1">
-            {activeTab === 'ORDERS' && (
-              <div className="py-4">
-                <h2 className="text-2xl font-bold mb-4 text-black">Orders</h2>
-                <table className="w-full border-collapse bg-white">
-                  <thead>
-                    <tr className="bg-gray-200">
-                      <th className="py-2 px-4 text-left text-black">Order</th>
-                      <th className="py-2 px-4 text-left text-black">Date</th>
-                      <th className="py-2 px-4 text-left text-black">Status</th>
-                      <th className="py-2 px-4 text-left text-black">Total</th>
-                      <th className="py-2 px-4 text-left text-black">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {orders.map((order) => (
-                      <tr key={order.id} className="border-b hover:bg-gray-100">
-                        <td className="py-2 px-4 text-black">{order.id}</td>
-                        <td className="py-2 px-4 text-black">{order.date}</td>
-                        <td className="py-2 px-4 text-black">{order.status}</td>
-                        <td className="py-2 px-4 text-black">{order.total}</td>
-                        <td className="py-2 px-4 text-black ">
-                          <a href={`/orders/${order.id}`} className="text-blue-500 hover:text-blue-700">
-                            View
-                          </a>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+    <div className="2xl:w-[80%] mx-auto py-4 sxm:w-[95%] md:w-[90%]">
+      <div className="flex flex-col md:flex-row">
+        {/* Sidebar */}
+        <div className="md:w-1/4 p-4 border-b md:border-b-0 md:border-r">
+      <ul className="space-y-4">
+        {items.map((item) => (
+          <li
+            key={item.id}
+            className={`p-2 ${selectedItem === item.id ? 'bg-blue-500 text-white' : ''}`}
+            onClick={() => handleItemClick(item.id)}
+          >
+            {item.label}
+          </li>
+        ))}
+      </ul>
+    </div>
 
-            {activeTab === 'DOWNLOADS' && (
-              <div className="py-4">
-                <h2 className="text-2xl font-bold mb-4 text-black">Downloads</h2>
-                <table className="w-full border-collapse bg-white">
-                  <thead>
-                    <tr className="bg-gray-200">
-                      <th className="py-2 px-4 text-left text-black">Product</th>
-                      <th className="py-2 px-4 text-left text-black">Downloads</th>
-                      <th className="py-2 px-4 text-left text-black">Expires</th>
-                      <th className="py-2 px-4 text-left text-black">Download</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {downloads.map((download) => (
-                      <tr key={download.id} className="border-b hover:bg-gray-100">
-                        <td className="py-2 px-4 text-black">{download.product}</td>
-                        <td className="py-2 px-4 text-black">{download.date}</td>
-                        <td className="py-2 px-4 text-black">{download.expires}</td>
-                        <td className="py-2 px-4 text-black">
-                          <a href={download.link} className="text-blue-500 hover:text-blue-700">
-                            Click Here To Download Your File
-                          </a>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+        {/* Main Content */}
+        <div className="md:w-3/4 p-6">
+   {renderComponent()}
 
-            {activeTab === 'ACCOUNT DETAILS' && (
-              <div className="py">
-                <h3 className="text-2 font-bold text-black">Account details</h3>
-                <div className="login">
-                  <div className="login_form_container">
-                    <div className="account_login_form">
-                      <form action="#" className="mx-auto flex-1">
-                        <p className="mb-2 text-1 text-black">
-                          Already have an account? <></>
-                          <a href="#" className="text-blue-500" data-bs-toggle="modal" data-bs-target="#loginActive">
-                            Log in instead!
-                          </a>
-                        </p>
-                        <div className="input-radio mb-1">
-                          <span className="custom-radio py-1 text-black">
-                            <input type="radio" value="1" name="id_gender" /> Mr.
-                          </span> 
-                          <span className="custom-radio ml-4 py-1 text-black">
-                            <input type="radio" value="2" name="id_gender" /> Mrs.
-                          </span>
-                        </div>
-                        <div className="default-form-box mb-1 py-1">
-                          <label className="text-black">First Name</label>
-                          <input type="text" name="first-name" className="border p-2 w-full" />
-                        </div>
-                        <div className="default-form-box mb-1 py-1">
-                          <label className="text-black">Last Name</label>
-                          <input type="text" name="last-name" className="border p-2 w-full" />
-                        </div>
-                        <div className="default-form-box mb-1 py-1">
-                          <label className="text-black">Email</label>
-                          <input type="text" name="email-name" className="border p-2 w-full" />
-                        </div>
-                        <div className="default-form-box mb-1 py-1">
-                          <label className="text-black">Password</label>
-                          <input type="password" name="user-password" className="border p-2 w-full" />
-                        </div>
-                        <div className="default-form-box mb-1 py-1">
-                          <label className="text-black">Birthdate</label>
-                          <input type="date" name="birthday" className="border p-2 w-full" />
-                        </div>
-                        <label className="checkbox-default mb-1 py-1" htmlFor="offer">
-                          <input type="checkbox" id="offer" />
-                          <span className="text-black"> Receive offers from our partners</span>
-                        </label><br />
-                        <label className="checkbox-default mb-1 py-1" htmlFor="newsletter">
-                          <input type="checkbox" id="newsletter" />
-                          <span className="text-black"> Sign up for our newsletter
-                            <br />
-                            <em className='text-[#3B3B3B]'>50 You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.</em>
-                          </span>
-                        </label>
-                        <div className="save_button mt-3">
-                          <button className="btn bg-[#3B3B3B] text-white p-2 rounded hover:bg-blue-500" type="submit">
-                            Save
-                          </button>
-                        </div>
-                      </form>
-                    </div>
+          {/* Orders Section
+          <div className="mt-6">
+            <h3 className="font-semibold mb-4">Đơn Hàng</h3>
+            <ul className="space-y-2">
+              {orders.map(order => (
+                <li key={order.id} className="border p-4 flex justify-between items-center cursor-pointer" onClick={() => handleOrderClick(order)}>
+                  <div>
+                    <p>Mã Đơn: {order.id}</p>
+                    <p>Ngày: {order.date}</p>
+                    <p>Tổng Tiền: {order.total.toLocaleString()} VNĐ</p>
                   </div>
-                </div>
-              </div>
-            )}
+                  <span className="text-green-500">{order.status}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          Order Details Section
+          {selectedOrder && (
+            <div className="mt-6 p-4 bg-gray-100 rounded">
+              <h3 className="font-semibold mb-2">Chi Tiết Đơn Hàng {selectedOrder.id}</h3>
+              <p>Ngày: {selectedOrder.date}</p>
+              <p>Tổng Tiền: {selectedOrder.total.toLocaleString()} VNĐ</p>
+              <p>Trạng Thái: {selectedOrder.status}</p>
+              <p>Sản phẩm: </p>
+              <ul>
+                <li>Sản phẩm A - 1 cái - 100000 VNĐ</li>
+                <li>Sản phẩm B - 2 cái - 50000 VNĐ</li>
+              </ul>
+            </div>
+          )} */}
+
+          {/* Membership Info */}
+          <div className="mt-6 p-4 bg-gray-100 rounded">
+            <h3 className="font-semibold mb-2">Tổng Quan Thứ Bậc</h3>
+            <p>Hạng thành viên: Gold</p>
+            <p>Số điểm hiện tại: 920 Điểm</p>
+            <p>Số điểm cần tích lũy thêm: 480 Điểm</p>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default AccountPage;
+}
