@@ -1,10 +1,30 @@
-"use client"
+"use client";
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import { useState } from 'react';
 import Slider from 'react-slick';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+
+const CustomPrevArrow = ({ onClick }: { onClick?: () => void }) => (
+  <button
+    className="absolute top-[50%] left-[1rem] transform -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 z-10 shadow-md hover:bg-gray-900"
+    onClick={onClick}
+  >
+
+<FaAngleLeft />
+</button>
+);
+
+const CustomNextArrow = ({ onClick }: { onClick?: () => void }) => (
+  <button
+    className="absolute top-[50%] right-[1rem] transform -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 z-10 shadow-md hover:bg-gray-900"
+    onClick={onClick}
+  >
+<FaAngleRight />  
+  </button>
+);
 
 const Banner = () => {
   const [images] = useState([
@@ -30,14 +50,16 @@ const Banner = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
   };
 
   return (
-    <div className='banner-list'>
-      <Slider {...settings}> 
+    <div className="relative banner-list">
+      <Slider {...settings}>
         {images.map((item, index) => (
-          <div key={index} className='w-[100%] h-[30rem]'>
-            <img src={item.img} className='w-[100%] h-[100%]' alt={item.alt} />
+          <div key={index} className="w-[100%] h-[30rem]">
+            <img src={item.img} className="w-[100%] h-[100%]" alt={item.alt} />
           </div>
         ))}
       </Slider>

@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/app/components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { RecoilRoot } from "recoil";
+import BackToTopButton from "./components/component/BackToTop";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
         <RecoilRoot>
           <Header />
           {children}
+          <BackToTopButton/>
           <Footer />
         </RecoilRoot>
       </body>
