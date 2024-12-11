@@ -6,7 +6,7 @@ const ComingSoon = () => {
       <div className="text-center">
         {/* Logo Section */}
         <div className="mb-8">
-          <h1 className="text-4xl font-semibold text-gray-800">Hmart</h1>
+          <h1 className="text-4xl font-semibold text-blue-500">H<span className="text-black">mart</span></h1>
         </div>
 
         {/* Coming Soon Text */}
@@ -14,22 +14,22 @@ const ComingSoon = () => {
 
         {/* Countdown Timer (just placeholder for now) */}
         <div className="flex justify-center mb-12">
-          <div className="flex gap-8 text-5xl font-bold text-black">
+          <div className="flex gap-8  text-black">
             <div className="text-center">
-              <span className="block">0</span>
-              <span className="text-sm">Days</span>
+              <span className="block text-[5rem]">0</span>
+              <span className="text-[1rem]">Days</span>
             </div>
             <div className="text-center">
-              <span className="block">0</span>
-              <span className="text-sm">Hours</span>
+            <span className="block text-[5rem]">0</span>
+            <span className="text-[1rem]">Hours</span>
             </div>
             <div className="text-center">
-              <span className="block">0</span>
-              <span className="text-sm">Minutes</span>
+            <span className="block text-[5rem]">0</span>
+            <span className="text-[1rem]">Minutes</span>
             </div>
             <div className="text-center">
-              <span className="block">0</span>
-              <span className="text-sm">Seconds</span>
+            <span className="block text-[5rem]">0</span>
+            <span className="text-[1rem]">Seconds</span>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@ const ComingSoon = () => {
             placeholder="Enter your e-mail address"
             className="px-4 py-3 rounded-l-full bg-white border-2 border-gray-400 focus:outline-none w-80"
           />
-          <button className="px-6 py-3 bg-black text-white rounded-r-full font-semibold hover:bg-gray-800">
+          <button className="px-6 py-3 bg-blue-500 text-white rounded-r-full font-semibold hover:bg-blue-600">
             Subscribe
           </button>
         </div>

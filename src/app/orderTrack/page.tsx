@@ -1,7 +1,7 @@
 
 function OrderTrack() {
   return (
-    <div className="w-[600px] m-auto py-[2rem] shadow-lg bg-white">
+    <div className="w-[600px] m-auto py-[2rem] shadow-lg bg-white my-8">
         <div className="p-[2rem]">
             <p className="text-[.8rem]" style={{lineHeight:"1.2rem"}}>To track your order please enter your Order ID in the box below and press the "Track" button. This was given to you on your receipt and in the confirmation email you should have received.</p>
             <div>
@@ -28,7 +28,7 @@ function OrderTrack() {
           className="w-full  px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
         />
       </div>
-      <button className="block text-center bg-[#266bf9] text-white py-3 px-[2rem] rounded-[2rem] text-[.9rem]">
+      <button className="block text-center bg-black hover:bg-[#266bf9] text-white py-3 px-[2.4rem] rounded-[2rem] text-[1.1rem]">
               Track
             </button>
       
