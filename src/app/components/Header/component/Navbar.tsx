@@ -1,10 +1,11 @@
 'use client';
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Navbar = () => {
   const [isProductHovered, setIsProductHovered] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleMouseEnter = () => {
     setIsProductHovered(true);
@@ -14,8 +15,29 @@ const Navbar = () => {
     setIsProductHovered(false);
   };
 
+  // Theo dõi sự kiện cuộn
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-blue-600 py-3 h-[55px]">
+    <nav
+      className={`${
+        isScrolled ? "fixed top-0 left-0 w-full bg-blue-600 shadow-lg z-50" : "bg-blue-600"
+      } py-3 transition-all duration-300`}
+    >
       <div className="w-[80%] mx-auto flex justify-center uppercase">
         <ul className="flex gap-[3rem] text-white text-[.9rem] font-medium">
           <li><Link href="/">Home</Link></li>
@@ -31,8 +53,8 @@ const Navbar = () => {
             {isProductHovered && (
               <div
                 className="absolute left-0 top-full z-20"
-                onMouseEnter={handleMouseEnter} // Keep hover on the dropdown
-                onMouseLeave={handleMouseLeave} // Remove hover when leaving dropdown
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
                 <div className="bg-white p-5 shadow-lg rounded-lg">
                   <div className="w-[600px] px-[.5rem]">
@@ -48,10 +70,9 @@ const Navbar = () => {
                         </li>
                         <li className="w-[100%]">
                           <Link href="/comingsoon" className="text-[.8rem] text-black">
-                            Comming soon
+                            Coming Soon
                           </Link>
                         </li>
-                      
                       </div>
 
                       <div className="text-black border-r border-gray-300 px-4">
@@ -80,7 +101,7 @@ const Navbar = () => {
                         </li>
                       </div>
 
-                      <div className="text-black  pl-4">
+                      <div className="text-black pl-4">
                         <h3 className="text-[.9rem] text-[#7500CF] mb-[.1rem] font-semibold">
                           Related Pages
                         </h3>
