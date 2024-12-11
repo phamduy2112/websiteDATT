@@ -4,7 +4,8 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./component/Navbar";
 import { useState } from "react";
 import TaskHeaderMb from "./component/TaskHeader";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaRegHeart, FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 const Header = () => {
   const [isvisibleHeaderMB, setisvisibleHeaderMB] = useState(false);
@@ -12,21 +13,23 @@ const Header = () => {
   return (
     <header className="relative w-full z-50">
       {/* Top Bar */}
-      <div className="bg-gray-900 text-gray-300 py-2 relative">
+      <div className="bg-gray-900 text-gray-300 py-2 relative border-b border-gray-400">
         <div className="container mx-auto flex justify-between items-center px-4 flex-wrap md:flex-nowrap">
-          <div className="text-xs sm:text-sm text-center md:text-left w-full md:w-auto mb-2 md:mb-0">
+          <div className="text-xs sm:text-[.8rem] text-center md:text-left w-full md:w-auto mb-2 md:mb-0">
             World Wide Completely Free Returns and Shipping
           </div>
-          <div className="flex items-center space-x-4 w-full md:w-auto justify-center md:justify-end">
-            <div className="flex items-center space-x-2">
+          <div className="flex items-center w-full md:w-auto justify-center md:justify-end">
+            <div className="flex gap-[.5rem] items-center border-r border-gray-300 px-4">
               <FontAwesomeIcon icon={faPhone} className="text-blue-500" />
-              <span className="text-xs sm:text-sm">+012 3456 789</span>
+              <span className="text-xs sm:sm:text-[.8rem]">+012 3456 789</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-xs sm:text-sm">demo@example.com</span>
+            <div className="flex gap-[.5rem] items-center  border-r border-gray-300 px-4">
+             <MdEmail className="text-blue-500" />
+              <span className="text-xs sm:sm:text-[.8rem]">demo@example.com</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <a href="#" className="text-gray-300 hover:text-white text-xs sm:text-sm">Account</a>
+            <div className="flex gap-[.5rem] items-center pl-4">
+            <FaUser  className="text-blue-500" />
+              <a href="#" className="text-gray-300 hover:text-white text-xs sm:sm:text-[.8rem]">Account</a>
             </div>
           </div>
         </div>
@@ -51,9 +54,8 @@ const Header = () => {
           </div>
           <div className="hidden md:flex items-center space-x-6">
             <div className="relative">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20.8 4.6a5.6 5.6 0 00-7.9 0L12 5.5l-.9-.9a5.6 5.6 0 00-7.9 7.9l.9.9L12 21l8.9-8.9.9-.9a5.6 5.6 0 000-7.9z" />
-              </svg>
+            <FaRegHeart className="text-[1.5rem] text-white" />
+
             </div>
             <div className="relative">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
