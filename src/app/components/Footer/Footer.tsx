@@ -14,16 +14,16 @@ function Footer() {
       </p>
       <div className="flex space-x-4 mt-4">
         {/* Social Media Icons */}
-        <a href="#" className="bg-gray-500 hover:bg-blue-500 w-[35px] h-[35px] rounded-[.2rem] text-white flex justify-center items-center">
+        <a href="#" className="bg-gray-500 hover:bg-blue-500 hover:mt-[-2px] transition-all w-[35px] h-[35px] rounded-[.2rem] text-white flex justify-center items-center">
           <FaFacebookF />
           </a>
-          <a href="#" className="bg-gray-500 hover:bg-blue-500 w-[35px] h-[35px] rounded-[.2rem] text-white flex justify-center items-center">
+          <a href="#" className="bg-gray-500 hover:bg-blue-500 hover:mt-[-2px] transition-all w-[35px] h-[35px] rounded-[.2rem] text-white flex justify-center items-center">
           <IoLogoTumblr  />
           </a>
-          <a href="#" className="bg-gray-500 hover:bg-blue-500 w-[35px] h-[35px] rounded-[.2rem] text-white flex justify-center items-center">
+          <a href="#" className="bg-gray-500 hover:bg-blue-500 hover:mt-[-2px] transition-all w-[35px] h-[35px] rounded-[.2rem] text-white flex justify-center items-center">
 <IoLogoTwitter />
         </a>
-        <a href="#" className="bg-gray-500 hover:bg-blue-500 w-[35px] h-[35px] rounded-[.2rem] text-white flex justify-center items-center">
+        <a href="#" className="bg-gray-500 hover:bg-blue-500 hover:mt-[-2px] transition-all w-[35px] h-[35px] rounded-[.2rem] text-white flex justify-center items-center">
           <IoLogoInstagram />
         </a>
       </div>
@@ -32,22 +32,22 @@ function Footer() {
     <div>
       <h3 className="font-semibold text-lg mb-3">Services</h3>
       <ul className="space-y-1 text-[.9rem]">
-        <li><a href="#" className="hover:text-blue-500">My Account</a></li>
-        <li><a href="#" className="hover:text-blue-500">Contact</a></li>
-        <li><a href="#" className="hover:text-blue-500">Shopping Cart</a></li>
-        <li><a href="#" className="hover:text-blue-500">Shop</a></li>
-        <li><a href="#" className="hover:text-blue-500">Services Login</a></li>
+        <li><a href="#" className="hover:text-blue-500  hover:ml-[7px] transition-all">My Account</a></li>
+        <li><a href="#" className="hover:text-blue-500  hover:ml-[7px] transition-all">Contact</a></li>
+        <li><a href="#" className="hover:text-blue-500  hover:ml-[7px] transition-all">Shopping Cart</a></li>
+        <li><a href="#" className="hover:text-blue-500  hover:ml-[7px] transition-all">Shop</a></li>
+        <li><a href="#" className="hover:text-blue-500  hover:ml-[7px] transition-all">Services Login</a></li>
       </ul>
     </div>
     {/* My Account */}
     <div>
       <h3 className="font-semibold text-lg mb-3">My Account</h3>
       <ul className="space-y-1 text-[.9rem]">
-        <li><a href="#" className="hover:text-blue-500">My Account</a></li>
-        <li><a href="#" className="hover:text-blue-500">Contact</a></li>
-        <li><a href="#" className="hover:text-blue-500">Shopping Cart</a></li>
-        <li><a href="#" className="hover:text-blue-500">Shop</a></li>
-        <li><a href="#" className="hover:text-blue-500">Services Login</a></li>
+        <li><a href="#" className="hover:text-blue-500 hover:ml-[7px] transition-all ">My Account</a></li>
+        <li><a href="#" className="hover:text-blue-500  hover:ml-[7px] transition-all">Contact</a></li>
+        <li><a href="#" className="hover:text-blue-500  hover:ml-[7px] transition-all">Shopping Cart</a></li>
+        <li><a href="#" className="hover:text-blue-500  hover:ml-[7px] transition-all">Shop</a></li>
+        <li><a href="#" className="hover:text-blue-500  hover:ml-[7px] transition-all">Services Login</a></li>
       </ul>
     </div>
     {/* Contact Info */}
@@ -56,8 +56,8 @@ function Footer() {
       <ul className="space-y-1 text-[.9rem]">
         <li>Address: Your Address Goes Here</li>
         <li>Phone/Fax: 0123456789</li>
-        <li>Email: <a href="mailto:demo@example.com" className="hover:text-blue-500">demo@example.com</a></li>
-        <li>Email: <a href="mailto:demo@example.com" className="hover:text-blue-500">demo@example.com</a></li>
+        <li>Email: <a href="mailto:demo@example.com" className="hover:text-blue-500  hover:ml-[7px] transition-all">demo@example.com</a></li>
+        <li>Email: <a href="mailto:demo@example.com" className="hover:text-blue-500  hover:ml-[7px] transition-all">demo@example.com</a></li>
       </ul>
     </div>
   </div>
