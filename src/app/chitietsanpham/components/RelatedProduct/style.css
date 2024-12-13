@@ -1,0 +1,37 @@
+.group:hover .slick-arrow {
+  opacity: 1;
+}
+
+.slick-arrow {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.slick-slide {
+  padding: 0 8px; /* Điều chỉnh padding để tạo khoảng cách */
+}
+.slick-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.slick-list {
+  display: flex;
+  justify-content: center;
+}
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-track {
+  display: flex !important; /* Đảm bảo các slide không bị thay đổi cách hiển thị */
+}
+
+.slick-list {
+  margin: 0 -10px; /* Điều chỉnh margin nếu cần để tránh tràn */
+}
+.slick-slide > div {
+  width: 270px !important; /* Kích thước mỗi sản phẩm */
+  padding: 0 10px; /* Padding giữa các sản phẩm nếu cần */
+}

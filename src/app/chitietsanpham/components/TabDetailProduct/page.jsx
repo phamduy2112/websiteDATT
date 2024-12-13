@@ -32,7 +32,7 @@ const product = {
 };
 
 const TabDetailProduct = () => {
-  const [activeTab, setActiveTab] = useState("information"); 
+  const [activeTab, setActiveTab] = useState("information");
   const [isMobile, setIsMobile] = useState(false);
   const [tabContentVisible, setTabContentVisible] = useState({
     information: false,
@@ -42,7 +42,7 @@ const TabDetailProduct = () => {
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize(); 
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -55,14 +55,14 @@ const TabDetailProduct = () => {
     setActiveTab(tab);
   };
 
-  const [showReviews, setShowReviews] = useState(false);  
+  const [showReviews, setShowReviews] = useState(false);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     if (tab === "reviews") {
-      setShowReviews(true); 
+      setShowReviews(true);
     } else {
-      setShowReviews(false); 
+      setShowReviews(false);
     }
   };
 
@@ -277,7 +277,9 @@ const TabDetailProduct = () => {
               <div className="flex-1">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
-                    <h4 className="text-[18px] font-medium">{comment.name}</h4>
+                    <h4 className="text-[18px] font-semibold">
+                      {comment.name}
+                    </h4>
                     <div className="text-yellow-500 flex">
                       {"★".repeat(comment.rating)}
                       {"☆".repeat(5 - comment.rating)}
@@ -302,7 +304,7 @@ const TabDetailProduct = () => {
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <h4 className="text-[18px] font-medium">Ignis</h4>
+                          <h4 className="text-[18px] font-semibold">Ignis</h4>
                           <div className="text-yellow-500 flex">
                             {"★".repeat(5)}
                           </div>
@@ -326,10 +328,10 @@ const TabDetailProduct = () => {
 
           {/* Bảng đánh giá */}
           <div className="mt-10">
-            <h3 className="text-[18px] font-medium">Add a Review</h3>
+            <h3 className="text-[18px] font-semibold">Add a Review</h3>
             <div className="mt-2">
               <div className="flex items-center mb-4">
-                <span className="text-[18px] font-medium">Your rating:</span>
+                <span className="text-[18px] font-semibold">Your rating:</span>
                 <div className="flex ml-2 text-yellow-500">
                   {"★".repeat(5)} {/* Mã đánh giá giả */}
                 </div>
@@ -368,7 +370,7 @@ const TabDetailProduct = () => {
                 </label>
               </div>
 
-              <button className="mt-4 bg-black text-white px-4 py-2 w-[170px] h-[50px] text-[18px] rounded-2xl">
+              <button className="mt-4 bg-black hover hover:bg-[#266BF9] text-white px-4 py-2 w-[170px] h-[50px] text-[18px] rounded-2xl font-semibold">
                 Submit
               </button>
             </div>
