@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import React, { useState, useRef, useEffect } from 'react';
 
 const FAQItem = ({ question, answer, isOpen, toggleOpen }: any) => {
@@ -13,7 +14,9 @@ const FAQItem = ({ question, answer, isOpen, toggleOpen }: any) => {
   }, [isOpen]);
 
   return (
-    <div className="border rounded-lg shadow-md mb-4">
+    <div>
+      
+      <div className="border rounded-lg shadow-md mb-4">
       <div 
         className="bg-gray-100 p-4 flex justify-between items-center cursor-pointer"
         onClick={toggleOpen}
@@ -34,6 +37,8 @@ const FAQItem = ({ question, answer, isOpen, toggleOpen }: any) => {
         </div>
       </div>
     </div>
+    </div>
+    
   );
 };
 
@@ -51,7 +56,24 @@ const FAQList = () => {
   };
 
   return (
-    <div className='w-[60%] m-auto'>
+    <div>
+          <div className="breadcrumb-area mb-[2rem] relative bg-gray-300 min-h-[35vh]" style={{ borderRadius: '20px' }}>
+      <div className="text-left container  m-auto">
+       <div className='absolute top-[30%] left-[40%] z-[10]'>
+        <h2 className='text-center text-[3rem] font-semibold'>Faq
+        </h2>
+        <div className="flex gap-6 self-center max-w-full text-[1rem] leading-none uppercase whitespace-nowrap w-[172px]">
+            <Link href="/" className="text-black hover:text-blue-600">Home</Link>
+            <div className="grow shrink text-blue-600 w-[92px]"> // Faq</div>
+          </div>
+       </div>
+       
+        <div className="absolute top-[30%] left-[40%] z-0 text-gray-400 text-8xl font-thin ">
+          1920x406
+        </div>
+      </div>
+      </div>
+       <div className='w-[60%] m-auto'>
    <div className="space-y-4">
       {faqs.map((faq, index) => (
         <FAQItem 
@@ -64,6 +86,8 @@ const FAQList = () => {
       ))}
     </div>
     </div>
+    </div>
+   
  
   );
 };

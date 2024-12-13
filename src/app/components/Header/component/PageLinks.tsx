@@ -6,7 +6,7 @@ const PageLinks = () => {
        
           <div className="space-y-4">
             <h2 className="text-xl font-bold">Inner Pages</h2>
-            <ul className="space-y-2">
+            <ul className="space-y-2 ">
               <li>404 Page</li>
               <li>Order Tracking</li>
               <li>Faq Page</li>

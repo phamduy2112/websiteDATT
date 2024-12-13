@@ -3,13 +3,76 @@ import ProductGrid from "./component/ProductGrid";
 import { FiList } from "react-icons/fi";
 import { BsFillGrid3X2GapFill } from "react-icons/bs";
 import ProductList from "./component/ProductList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { getProductApi } from "../trangChu/api/product.api";
+import { productAtom } from "@/atoms/productAtom";
+import Link from "next/link";
 
 function ListProduct() {
     const [grid, setGrid] = useState(true); // true for grid view, false for list view
+ const [products, setProducts] = useRecoilState(productAtom);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const res = await getProductApi();
+        setProducts(res.data || []);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+        setError("Không thể tải sản phẩm. Vui lòng thử lại!");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (products.length === 0) {
+      fetchProducts();
+    }
+  }, [products.length, setProducts]);
+
+  if (loading) {
     return (
-        <div className="w-full min-h-screen px-4 py-6 md:px-8 lg:px-0 lg:w-[90%] xl:w-[80%] mx-auto">
+      <div className="flex justify-center items-center h-64">
+        <div className="spinner border-4 border-blue-500 border-t-transparent rounded-full w-12 h-12 animate-spin"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="text-center text-red-600 py-4">{error}</div>;
+  }
+
+  if (products.length === 0) {
+    return (
+      <div className="text-center py-4">
+        <p>Không có sản phẩm nào!</p>
+      </div>
+    );
+  }
+    return (
+        <div>
+                <div className="breadcrumb-area relative bg-gray-300 min-h-[35vh]" style={{ borderRadius: '20px' }}>
+      <div className="text-left container  m-auto">
+       <div className='absolute top-[30%] left-[40%] z-[10]'>
+        <h2 className='text-center text-[3rem] font-semibold'>Blog Single
+        </h2>
+        <div className="flex gap-6 self-center max-w-full text-[1rem] leading-none uppercase whitespace-nowrap w-[172px]">
+            <Link href="/" className="text-black hover:text-blue-600">Home</Link>
+            <div className="grow shrink text-blue-600 w-[92px]"> // ListProduct</div>
+          </div>
+       </div>
+       
+        <div className="absolute top-[30%] left-[40%] z-0 text-gray-400 text-8xl font-thin ">
+          1920x406
+        </div>
+      </div>
+      </div>
+         <div className="w-full min-h-screen px-4 py-6 md:px-8 lg:px-0 lg:w-[90%] xl:w-[80%] mx-auto">
+       
             <div className="flex flex-col lg:flex-row gap-6">
                 {/* Sidebar */}
                 <div className="w-full lg:w-[15rem] 2xl:w-[20rem] h-[30rem] bg-white rounded-xl  shadow-md p-4">
@@ -54,10 +117,12 @@ function ListProduct() {
                         </div>
                     </div>
                     {/* Product Display */}
-                    {grid ? <ProductGrid /> : <ProductList />}
+                    {grid ? <ProductGrid products={products?.data}/> : <ProductList products={products?.data}/>}
                 </div>
             </div>
+        </div>   
         </div>
+        
     );
 }
 

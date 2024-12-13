@@ -4,11 +4,12 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./component/Navbar";
 import { useState } from "react";
 import TaskHeaderMb from "./component/TaskHeader";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaRegHeart, FaUser } from "react-icons/fa";
 import Link from "next/link";
 import { cartState } from '../../cart/cartState'; 
 import { useRecoilValue } from 'recoil';
 import { MdEmail } from "react-icons/md";
+import { BsHearts } from "react-icons/bs";
 const Header = () => {
   const [isvisibleHeaderMB, setisvisibleHeaderMB] = useState(false);
   const cart = useRecoilValue(cartState);
@@ -32,10 +33,12 @@ const Header = () => {
              <MdEmail className="text-blue-500" />
               <span className="text-xs sm:sm:text-[.8rem]">demo@example.com</span>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex gap-[.5rem] items-center px-4">
+            <FaUser className="text-blue-500" />
+
               <a
                 href="#"
-                className="text-gray-300 hover:text-white text-xs sm:text-sm"
+                className="text-gray-300 hover:text-white text-[.8rem]"
               >
                 Account
               </a>
@@ -79,18 +82,7 @@ const Header = () => {
             </div>
             <div className="hidden md:flex items-center space-x-6">
               <div className="relative">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-white"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M20.8 4.6a5.6 5.6 0 00-7.9 0L12 5.5l-.9-.9a5.6 5.6 0 00-7.9 7.9l.9.9L12 21l8.9-8.9.9-.9a5.6 5.6 0 000-7.9z" />
-                </svg>
+                <FaRegHeart className="text-[1.5rem]"/>
               </div>
               <div className="relative">
                 <Link href="/cart">
