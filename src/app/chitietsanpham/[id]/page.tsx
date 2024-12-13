@@ -51,7 +51,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ params }) => {
     );
   }
 
-  const { name, price, sale, originalPrice, rating, reviews, short_description, id: productId, category, type, image } = product?.data;
+  const { name, price, sale, originalPrice, rating, reviews, short_description, id: productId, category, type } = product?.data;
 
   return (
     <div>
