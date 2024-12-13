@@ -54,7 +54,7 @@ const Header = () => {
               </a>
               <span className="text-white">mart</span>
             </div>
-            <div className="hidden md:block w-3/4">
+            <div className="hidden md:block w-[40%]">
               <div className="flex">
                 <input
                   type="text"
