@@ -29,9 +29,7 @@ const InforProduct: React.FC<InfoProductProps> = ({ product }) => {
         <div className="w-full md:w-1/2 p-4">
           <img
             src={
-              product.image && product.image[0]
-                ? product.image[0]
-                : "https://via.placeholder.com/570x675"
+              "https://via.placeholder.com/570x675"
             }
             className="w-full h-auto rounded-[10px]"
             alt="Product image"
