@@ -36,8 +36,8 @@ const InforProduct: React.FC<InfoProductProps> = ({ product }) => {
           />
 
           <div className="flex justify-center space-x-2 mt-4">
-            {product.image && Array.isArray(product.image) // Kiểm tra nếu có hình ảnh phụ
-              ? product.image.slice(0).map((image, index) => (
+            {product?.image && Array.isArray(product?.image) // Kiểm tra nếu có hình ảnh phụ
+              ? product?.image.slice(0).map((image, index) => (
                   <img
                     key={index}
                     src="https://via.placeholder.com/127x127" // Ảnh phụ
