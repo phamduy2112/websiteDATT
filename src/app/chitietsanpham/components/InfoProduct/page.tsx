@@ -55,11 +55,11 @@ const InforProduct: React.FC<InfoProductProps> = ({ product }) => {
           </h1>
           <p className="text-[36px] text-black leading-[30px] font-semibold">
             {/* Hiển thị giá bán hoặc giá khuyến mãi nếu có */}
-            {product.sale && product.originalPrice
+            {product?.sale && product?.originalPrice
               ? `$${product?.sale}` // Giá sale
               : `$${product?.price}`}{" "}
             {/* Giá thông thường nếu không có sale */}
-            {product.sale && product.originalPrice && (
+            {product?.sale && product?.originalPrice && (
               <span className="line-through text-red-500 ml-2">
                 ${product?.originalPrice} {/* Giá gốc nếu có */}
               </span>
@@ -92,7 +92,7 @@ const InforProduct: React.FC<InfoProductProps> = ({ product }) => {
             <span className="font-semibold text-[#266bf9]">Tags:</span>
             <span>
               {" "}
-              {product?.tags?.length ? product.tags : "Đang cập nhật"}
+              {product?.tags?.length ? product?.tags : "Đang cập nhật"}
             </span>{" "}
             {/* Hiển thị tags hoặc "Đang cập nhật" */}
           </div>
