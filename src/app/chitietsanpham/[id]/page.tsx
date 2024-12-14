@@ -15,13 +15,15 @@ interface ProductDetailProps {
 const ProductDetail: React.FC<ProductDetailProps> = ({ params }) => {
   const [product, setProduct] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // Đổi tên productId từ params
   const { id } = params;
-  const productId = Number(id);
+  const idFromParams = Number(id);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const product = await getProductDetailApi(productId);
+        const product = await getProductDetailApi(idFromParams);
         if (product) {
           setProduct(product);
           setError(null);
@@ -33,7 +35,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ params }) => {
     };
 
     fetchProduct();
-  }, [productId]);
+  }, [idFromParams]);
 
   if (error) {
     return (
@@ -51,7 +53,19 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ params }) => {
     );
   }
 
-  const { name, price, sale, originalPrice, rating, reviews, short_description, id: productId, category, type } = product?.data;
+  // Đổi tên productId trong destructuring từ product?.data
+  const {
+    name,
+    price,
+    sale,
+    originalPrice,
+    rating,
+    reviews,
+    short_description,
+    id: dataProductId,
+    category,
+    type,
+  } = product?.data;
 
   return (
     <div>
@@ -69,15 +83,19 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ params }) => {
 
           {/* Cột thông tin sản phẩm */}
           <div className="w-full md:w-1/2 p-4 mb-4">
-            <h1 className="text-[36px] text-black capitalize leading-none font-normal mb-5">{name}</h1>
+            <h1 className="text-[36px] text-black capitalize leading-none font-normal mb-5">
+              {name}
+            </h1>
             <p className="text-[36px] text-black leading-[30px] font-semibold">
               {price}
-              {sale && <span className="line-through text-red-500 ml-2">{originalPrice}</span>}
+              {sale && (
+                <span className="line-through text-red-500 ml-2">
+                  {originalPrice}
+                </span>
+              )}
             </p>
             <div className="flex items-center mt-2 mb-4">
-              <span className="text-yellow-500">
-                {"★".repeat(rating || 0)}☆
-              </span>
+              <span className="text-yellow-500">{"★".repeat(rating || 0)}☆</span>
               <span className="ml-2 text-gray-500 text-[18px]">
                 ({reviews || 0} Customer Reviews)
               </span>
@@ -88,7 +106,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ params }) => {
             </p>
             <div className="mt-4 text-[16px]">
               <span className="font-semibold text-[#266bf9]">SKU:</span>
-              <span>{productId || "Không xác định"}</span>
+              <span>{dataProductId || "Không xác định"}</span>
             </div>
             <div className="mt-2 text-[16px]">
               <span className="font-semibold text-[#266bf9]">Categories:</span>
@@ -99,13 +117,15 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ params }) => {
               <span>{type}</span>
             </div>
 
-            <AddCart key={productId} product={product} />
+            <AddCart key={dataProductId} product={product} />
 
             <TabDetailProduct />
           </div>
         </div>
         <div className="mt-10">
-          <h2 className="text-[48px] text-center font-semibold mb-5">Related Products</h2>
+          <h2 className="text-[48px] text-center font-semibold mb-5">
+            Related Products
+          </h2>
           <p className="text-[18px] text-center text-gray-500 mb-7">
             There are many variations of passages of Lorem Ipsum available
           </p>
