@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FaFacebookF, FaGoogle } from 'react-icons/fa';
 import { login } from './api/login';
+import Link from 'next/link';
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -45,7 +46,7 @@ function Login() {
                 <h3 className="font-semibold text-2xl text-gray-800">Sign In</h3>
                 <p className="text-gray-400">
                   Don't have an account?{' '}
-                  <a href="#" className="text-sm text-blue-600 hover:text-blue-800">Sign Up</a>
+                  <Link href="/dangki" className="text-sm text-blue-600 hover:text-blue-800">Sign Up</Link>
                 </p>
               </div>
               
