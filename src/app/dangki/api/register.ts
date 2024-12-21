@@ -1,14 +1,16 @@
-import { corsNextjs } from "@/app/components/utils/utils";
-import axios from "axios";
+import axios from 'axios';
 
-export const register = async (data: any) => {
+export async function register(userData) {
   try {
-    const response = await axios.post(
-      `${corsNextjs}/https://api-core.dsp.one/api/auth/user/register`,
-      data
-    );
-    return response.data;
+    const response = await axios.post('/api/auth/user/register', userData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log(response);
+    
+    return response
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error('Error:', error);
   }
-};
+}

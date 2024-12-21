@@ -2,7 +2,8 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt, faUser } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getBlogApi } from '../api/Blog';
 
 const BlogListPage = () => {
   const [showOffCanvas, setShowOffCanvas] = useState(false);
@@ -10,6 +11,23 @@ const BlogListPage = () => {
   const toggleOffCanvas = () => {
     setShowOffCanvas((prevState) => !prevState);
   };
+  const [blog, setBlog] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await getBlogApi(); // Gọi API
+        setBlog(res.data || []); // Lưu dữ liệu vào state
+      } catch (err) {
+        console.error("Error fetching blogs:", err);
+      }
+    };
+
+    if (blog.length === 0) { // Kiểm tra blog đã có dữ liệu chưa
+      fetchBlogs();
+    }
+  }, [blog.length]); // Chỉ chạy khi blog.length thay đổi
+console.log(blog);
 
   return (
     <div className="bg-white flex flex-col pb-10">
@@ -61,7 +79,7 @@ const BlogListPage = () => {
         <div className="container w-[90%] md:w-[80%] lg:w-[60%]">
           <div className="row justify-content-center">
             {/* Example Blog Post Item */}
-            {[1, 2, 3].map((item, index) => (
+            {blog.map((item, index) => (
               <div key={index} className="col-12 mb-6 md:flex-row">
                 <div className="blog-post bg-white p-4 flex flex-col md:flex-row">
                   <div className="mr-0 md:mr-10 bg-gray-100 border-5 border-gray-400 mb-4 md:mb-0 rounded-2xl">
@@ -76,26 +94,28 @@ const BlogListPage = () => {
                     <div className="blog-post-meta flex items-center mb-4">
                       <div className="blog-date mr-4 text-black" style={{ fontSize: '14px' }}>
                         <FontAwesomeIcon icon={faCalendarAlt} className="mr-2 text-blue-400" />
-                        27, Jun 2030
+                        {item?.updated_at}
                       </div>
                       <div className="blog-author text-black" style={{ fontSize: '14px' }}>
                         <FontAwesomeIcon icon={faUser} className="mr-2 text-blue-400" />
-                        Oaklee Odom
+                      {item?.author}
                       </div>
                     </div>
                     <h1 className="post-title text-black" style={{ fontWeight: 'bold', fontSize: '20px' }}>
-                      <Link href="/blog/blogDetail">The Top Reasons People Succeed in the Smart Product Industry.</Link>
+                      <Link href={`/blog/detail/${item?.id}`}>
+                   {item?.title}
+                      </Link>
                     </h1>
                     <p className="post-excerpt text-black mt-5 mb-5" style={{ fontSize: '14px', color: '#3a3a3a' }}>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+{item?.description}
                     </p>
                     <Link 
-                      href="/blog/blogDetail" 
                       className="read-more text-white" 
                       style={{ backgroundColor: '#4e4e4e', padding: '10px 35px', borderRadius: '15px', marginTop: '10px', display: 'inline-block', transition: 'background-color 0.3s' }} 
                       onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'blue'}
                       onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#4e4e4e'}
-                    >
+                      href={`/blog/detail/${item?.id}`}
+                 >
                       Read More
                     </Link>
                   </div>

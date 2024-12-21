@@ -4,10 +4,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
 // import { faFacebook, faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { getBlogDetailApi } from '../../api/Blog';
+interface BlogDetailProps {
+  blogId: number;
+}
 
-const BlogDetailPage = () => {
-  const router = useRouter();
-
+const BlogDetailPage: React.FC<BlogDetailProps>   = ({ params }) => {
+  const { id } = params;
+  const blogId = Number(id);
+    const [blog, setblog] = useState<any>(null);
+    const [error, setError] = useState<string | null>(null);
+    useEffect(() => {
+      const fetchblog = async () => {
+        try {
+          const blog = await getBlogDetailApi(blogId);
+          if (blog) {
+            setblog(blog);
+            setError(null);
+          }
+        } catch (error) {
+          console.error("Failed to fetch blog details:", error);
+          setError("Không thể lấy thông tin sản phẩm");
+        }
+      };
+  
+      fetchblog();
+    }, [blogId]);
+    console.log(blog);
+    
   return (
     <div className="container mx-auto flex flex-wrap mt-10" style={{ width: '90%' }}>
       {/* Left Sidebar */}
@@ -92,25 +117,29 @@ const BlogDetailPage = () => {
         <div className="mb-2 flex items-center space-x-4 text-sm text-black">
           <div className="flex items-center">
             <FontAwesomeIcon icon={faCalendarAlt} className="text-blue-400 mr-2" />
-            27, Jun 2030
+            {blog?.data?.updated_at}
           </div>
           <div className="flex items-center">
             <FontAwesomeIcon icon={faUser} className="text-blue-400 mr-2" />
-            Elmer Schmidt
+           {blog?.data?.author}
           </div>
         </div>
 
         {/* Blog Title */}
-        <h1 className="text-3xl font-semibold mb-6">10 Principles of Psychology You Can Use to Improve Your Smart Product</h1>
+        <h1 className="text-3xl font-semibold mb-6">
+
+          {blog?.data.title}
+        </h1>
 
         {/* Blog Content */}
         <div className="text-gray-700 mb-6">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+{blog?.data?.description}
           </p>
           <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+{
+  blog?.data?.content
+}          </p>
         </div>
 
         {/* Author Section */}
