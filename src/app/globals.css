@@ -89,3 +89,32 @@ html {
     display: none;
   }
 }
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 70%;
+}
+
+/* Large tablets and below (1024px and down) */
+@media (max-width: 1024px) {
+  .container {
+    width: 80%;
+  }
+}
+
+/* Tablets (768px and down) */
+@media (max-width: 768px) {
+  .container {
+    width: 85%;
+  }
+}
+
+/* Mobile devices (480px and down) */
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+  }
+}

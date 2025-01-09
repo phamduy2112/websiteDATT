@@ -42,13 +42,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={`${
-        isScrolled ? "fixed top-0 left-0 w-full bg-blue-600 shadow-lg z-50" : "bg-blue-600"
+  <div className="bg-black">
+      <nav
+      className={` ${
+        isScrolled ? "fixed w-[100%] top-0 left-0  bg-blue-600 shadow-lg z-50" : "container bg-blue-600"
       } py-3 transition-all duration-300`}
     >
       <div className="w-[80%] mx-auto flex justify-center uppercase">
-        <ul className="flex gap-[3rem] text-white text-[.9rem] font-medium">
+        <ul className="flex gap-[3rem] text-white text-[.8rem] font-medium">
           <li><Link href="/">Home</Link></li>
           <li
             onMouseEnter={handleMouseEnterProduct}
@@ -130,10 +131,11 @@ const Navbar = () => {
 
           <li><Link href="/gioithieu" className="hover:underline">About</Link></li>
           <li><Link href="/listProduct" className="hover:underline">Shop</Link></li>
-          <li><Link href="#" className="hover:underline">Contact</Link></li>
+          <li><Link href="/lienhe" className="hover:underline">Contact</Link></li>
         </ul>
       </div>
     </nav>
+  </div>
   );
 };
 

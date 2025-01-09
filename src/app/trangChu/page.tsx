@@ -36,12 +36,12 @@ function TrangChu() {
     <div>
         <Banner></Banner>
         <div className="2xl:w-[80%] mx-auto sxm:w-[95%] md:-[90%]">
-        <div className="flex gap-4 justify-center py-[2rem]">
-        <div className="sxm:w-[90%] md:w-[40%] h-[255px]">
+        <div className="flex gap-4 justify-center py-[2rem] sxm:flex-col md:flex-row">
+        <div className="md:sxm:w-[90%] md:w-[40%] h-[255px]">
         <BannerCard title="Speaker" price="69.00" buttonColor="bg-black" />
 
       </div>
-      <div className="sxm:w-[90%] md:w-[40%] h-[255px]">
+      <div className="md:sxm:w-[90%] md:w-[40%] h-[255px]">
       <BannerCard title="Speaker" price="69.00" buttonColor="bg-black" />
 
       </div>
@@ -75,10 +75,11 @@ function TrangChu() {
     
     
     </div>
-    <FeaturedOffers products={products} /> 
 
        </div>
-        <div className="bg-gray-300 w-full h-[456px] flex flex-col justify-center items-center text-center">
+       <FeaturedOffers products={products} /> 
+
+        <div className="bg-gray-300 mt-[3rem] w-full h-[456px] flex flex-col justify-center items-center text-center">
       <h1 className="text-white text-3xl font-light">Smart Fashion</h1>
       <h2 className="text-white text-5xl font-bold mt-2">With Smart Devices</h2>
       <div className="text-gray-700 text-6xl font-bold mt-4">1920x456</div>
@@ -86,8 +87,12 @@ function TrangChu() {
         Shop All Devices
       </button>
     </div>
+    <div className="my-[3rem]">
+      
+    <FeatureSection/>
+    </div>
         <BlogCard/>
-        <FeatureSection/>
+        
            </div>
 
 

@@ -5,7 +5,7 @@ function ProductGrid(props) {
 
   return (
     <div className='flex justify-center'>
-    <div className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-[1rem]">
+    <div className="grid sm:grid-cols-2  xl:grid-cols-3  gap-[1rem]">
       
       {props.products.map((product) => (
        <ProductItem product={product} key={product.id}/>

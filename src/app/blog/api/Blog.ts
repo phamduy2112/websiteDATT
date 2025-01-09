@@ -1,9 +1,10 @@
 // /auth/post
+import axiosInstance from '@/axios.config';
 import axios from 'axios';
 
 export async function getBlogApi() {
   try {
-    const response = await axios.get('/api/auth/post', {
+    const response = await axiosInstance('/auth/post', {
       headers: {
         'Content-Type': 'application/json',
       },

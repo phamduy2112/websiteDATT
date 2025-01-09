@@ -28,7 +28,7 @@ const FeaturedOffers = ({ products }) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // Hiển thị mặc định 3 sản phẩm
+    slidesToShow: 2, // Hiển thị mặc định 3 sản phẩm
     slidesToScroll: 2, // Cuộn 2 sản phẩm mỗi lần
     autoplay: true,
     autoplaySpeed: 3000,
@@ -38,17 +38,11 @@ const FeaturedOffers = ({ products }) => {
       {
         breakpoint: 1600, // Với màn hình nhỏ hơn 1024px
         settings: {
-          slidesToShow: 3, // Hiển thị 2 sản phẩm
-          slidesToScroll: 1, // Cuộn 1 sản phẩm mỗi lần
-        },
-      },
-      {
-        breakpoint: 1024, // Với màn hình nhỏ hơn 1024px
-        settings: {
           slidesToShow: 2, // Hiển thị 2 sản phẩm
           slidesToScroll: 1, // Cuộn 1 sản phẩm mỗi lần
         },
       },
+     
       {
         breakpoint: 768, // Với màn hình nhỏ hơn 768px
         settings: {
@@ -72,7 +66,7 @@ const FeaturedOffers = ({ products }) => {
       <Slider {...settings}>
         {products.map((product, index) => (
           <div key={index} className="px-2"> {/* Mỗi sản phẩm là một slide */}
-            <div className="flex border rounded-lg shadow-lg max-w-xl h-[20rem]">
+            <div className="flex border rounded-lg shadow-lg max-w-full h-[20rem]">
               {/* Image + Button */}
               <div className="relative flex-shrink-0 w-1/2 bg-gray-300 flex justify-center items-center">
                 <span className="text-2xl font-bold">270x380</span>

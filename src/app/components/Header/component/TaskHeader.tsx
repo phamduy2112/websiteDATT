@@ -1,4 +1,6 @@
-import React from "react";
+
+'use client'
+import React, { useState } from "react";
 
 import { IoMdClose } from "react-icons/io";
 
@@ -10,75 +12,172 @@ interface TaskHeaderMbProps {
   onClose: () => void;
 }
 
-function TaskHeaderMb({ onClose }: TaskHeaderMbProps) {
+
+
+const TaskHeaderMb = ({ isOpen, onClose }) => {
+  const [expandedItems, setExpandedItems] = useState({
+    home: false,
+    pages: true,  // Initially expanded based on the image
+    innerPages: false,
+    otherShopPages: false,
+    relatedShopPage: false,
+    shop: false,
+    blog: false
+  });
+  const menuItems = [
+    { key: 'home', label: 'Home', link: '/' },
+    { key: 'about', label: 'About', link: '/gioithieu' },
+    { key: 'pages', label: 'Pages', subMenu: [{ key: 'page1', label: 'Page 1' }, { key: 'page2', label: 'Page 2' }] },
+  
+    
+    { key: 'shop', label: 'Shop', link: '/listProduct' },
+    { key: 'blog', label: 'Blog' ,link:"/blog/blogList"},
+    { key: 'contactUs', label: 'Contact Us',link:"/contact" },
+  ];
+
+  const toggleItem = (key) => {
+    setExpandedItems(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  };
+
   return (
-    <div className="w-[320px] h-[100vh] bg-white absolute top-0 left-0 py-4 px-[1rem]">
-      <div className='text-[2rem] cursor-pointer absolute hrefp-[1rem] right-[1rem]' onClick={onClose}>
-        <IoMdClose />
+    <div >
+      {isOpen && (
+  <div className="fixed inset-0 z-40">
+    {/* Black Overlay */}
+    <div
+      className="absolute inset-0 bg-black bg-opacity-50"
+      onClick={onClose} // Close the sidebar when clicking on the overlay
+    ></div>
+
+    {/* Sidebar */}
+    <div
+      className={`fixed top-0 left-0 h-full w-80 bg-white transform ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      } transition-transform duration-300 ease-in-out z-50`}
+    >
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 bg-blue-500 text-white rounded-full p-2"
+      >
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      {/* Contact Info Section */}
+      <div className="p-6 space-y-4 border-b">
+        <div className="flex items-center space-x-3 text-gray-600">
+          <svg
+            className="w-5 h-5 text-blue-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+            />
+          </svg>
+          <span>+012 3456 789</span>
+        </div>
+        <div className="flex items-center space-x-3 text-gray-600">
+          <svg
+            className="w-5 h-5 text-blue-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
+          </svg>
+          <span>demo@example.com</span>
+        </div>
+        <div className="flex items-center space-x-3 text-gray-600">
+          <svg
+            className="w-5 h-5 text-blue-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            />
+          </svg>
+          <span>Account</span>
+        </div>
       </div>
-      <div className="text-center border-b border-gray-500  py-[.5rem]">
-      <div className="text-[2rem] font-bold">
-            <a href="#" className="text-blue-500">H</a><span className="text-black">mart</span>
-          </div>
-        <form action="" className="w-full h-[38px]">
-        <div className=" w-full">
-            <div className="flex">
-              <input type="text" placeholder="Search" className="w-full py-2 px-4 rounded-l-md bg-gray-100 text-gray-900 focus:outline-none" />
-              <button className="bg-blue-500 px-4 rounded-r-md flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M12.9 14.32a8 8 0 111.414-1.414l4.95 4.95a1 1 0 01-1.414 1.414l-4.95-4.95zM8 14a6 6 0 100-12 6 6 0 000 12z" clipRule="evenodd" />
-                </svg>
+
+      {/* Navigation Menu */}
+      <nav className="mt-6">
+        <ul className="space-y-2">
+          {menuItems.map((item) => (
+            <li key={item.key} className="px-6">
+            {item.link ? (
+              <a
+                href={item.link}
+                className="w-full flex items-center justify-between py-2 text-gray-600 hover:text-gray-900"
+              >
+                <span>{item.label}</span>
+              </a>
+            ) : (
+              <button
+                onClick={() => toggleItem(item.key)}
+                className="w-full flex items-center justify-between py-2 text-gray-600 hover:text-gray-900"
+              >
+                <span>{item.label}</span>
+                {item.subMenu && (
+                  <span className="text-xl">
+                    {expandedItems[item.key] ? '-' : '+'}
+                  </span>
+                )}
               </button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div>
-        <ul>
-          <li className="text-[1.4rem]">
-            <div className="border-b border-gray-500 py-[.5rem]">
-              <Link href="/" className="text-[1.4rem] text-black">
-                Trang chủ
-              </Link>
-            </div>
-            <div className="border-b border-gray-500  py-[.5rem]">
-              <Link href="/gioithieu" className="text-[1.4rem] text-black">
-                Giới thiệu
-              </Link>
-            </div>
-            <div className="border-b border-gray-500  py-[.5rem]">
-              <Link href="/listProduct" className="text-[1.4rem] text-black">
-                Sản Phẩm
-              </Link>
-            </div>
-            <div className="border-b border-gray-500  py-[.5rem]">
-              <Link href="/bai-viet" className="text-[1.4rem] text-black">
-                Bài viết
-              </Link>
-            </div>
-            <div className="border-b border-gray-500  py-[.5rem]">
-              <Link href="/lienhe" className="text-[1.4rem] text-black">
-                Liên hệ
-              </Link>
-            </div>
-        
+            )}
+            {item.subMenu && expandedItems[item.key] && (
+              <ul className="ml-6 mt-2 space-y-2 border-l border-gray-300 pl-4">
+                {item.subMenu.map((subItem) => (
+                  <li key={subItem.key}>
+                    <a
+                      href={subItem.link || '#'}
+                      className="block text-gray-500 hover:text-gray-800"
+                    >
+                      {subItem.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
+          ))}
         </ul>
-        <div className="mt-6">
-          <h4 className="text-[1.6rem] py-3">Bạn cần giúp?</h4>
-          <div className="text-[1.3rem] py-1">Address: 1234 Fashion Street, Suite 567, New York, NY 10001</div>
-          <div className="text-[1.3rem] py-1">Email: <b>info@fashionshop.com</b></div>
-          <div className="text-[1.3rem] py-1">Phone: <b>(212) 555-1234</b></div>
-        </div>
-        <div className="border border-gray-500 w-[28%] px-[1rem]  py-[.5rem] absolute ">
-          <Link href="/dangnhap" className="flex text-[1.3rem] gap-[1rem]">   
-            {/* <FaRegUser /> */}
-            Login
-          </Link>
-        </div>
-      </div>
+      </nav>
     </div>
+  </div>
+)}
+     </div>
   );
-}
+};
 
 export default TaskHeaderMb;

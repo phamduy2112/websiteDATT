@@ -1,109 +1,112 @@
-'use client';
+'use client'
 import React, { useState } from 'react';
-import axios from 'axios';
-import { FaFacebookF, FaGoogle } from 'react-icons/fa';
-import { login } from './api/login';
-import Link from 'next/link';
 
-function Login() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+const Login = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    rememberMe: false
+  });
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent form submission from reloading the page
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
 
-    try {
-      const data={
-        email,
-        password,
-     
-      
-
-    
-      }
-      const response = await login(data)
-
-      // Handle success (e.g., save token, redirect user, etc.)
-      console.log('Login successful:', response.data);
-    } catch (error: any) {
-      // Handle error
-      setErrorMessage(error.response?.data?.message || 'Login failed. Please try again.');
-      console.error('Error logging in:', error);
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle login logic here
+    console.log('Form submitted:', formData);
   };
 
   return (
-    <div>
-      <div className="bg-blue-600 absolute top-0 left-0 bg-gradient-to-b from-gray-900 via-gray-900 to-blue-600 bottom-0 leading-5 h-full w-full overflow-hidden"></div>
-      
-      <div className="relative py-9 sm:flex sm:flex-row justify-center">
-        <div className="flex justify-center self-center z-10">
-          <div className="p-12 bg-white mx-auto rounded-3xl w-[28rem] shadow-lg">
-            <form onSubmit={handleLogin}>
-              <div className="mb-7">
-                <h3 className="font-semibold text-2xl text-gray-800">Sign In</h3>
-                <p className="text-gray-400">
-                  Don't have an account?{' '}
-                  <Link href="/dangki" className="text-sm text-blue-600 hover:text-blue-800">Sign Up</Link>
-                </p>
-              </div>
-              
-              <div className="space-y-6">
-                <div>
-                  <input
-                    className="w-full text-sm px-4 py-3 bg-transparent border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
+ <div>
+ <div className="relative flex flex-col justify-center items-center w-full text-center bg-[#acabab] min-h-[406px] px-4 sm:px-8 md:px-20 py-4 sm:py-24 md:py-40 ">
+      <div className="relative flex flex-col w-full max-w-[300px] z-10">
+        {/* Title */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight text-black mb-4">
+          Login
+        </h1>
 
-                <div className="relative">
-                  <input
-                    placeholder="Password"
-                    type={showPassword ? 'text' : 'password'}
-                    className="text-sm text-black px-4 py-3 rounded-lg w-full bg-transparent border border-gray-300 focus:outline-none focus:border-blue-600 transition-colors"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <div
-                    className="flex items-center absolute inset-y-0 right-0 mr-3 text-sm leading-5 cursor-pointer"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <svg className="h-4 text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor">
-                        <path d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"/>
-                      </svg>
-                    ) : (
-                      <svg className="h-4 text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor">
-                        <path d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"/>
-                      </svg>
-                    )}
-                  </div>
-                </div>
-
-                {errorMessage && (
-                  <p className="text-red-600 text-sm">{errorMessage}</p>
-                )}
-
-                <div>
-                  <button
-                    type="submit"
-                    className="w-full flex justify-center bg-blue-600 hover:bg-blue-500 text-gray-100 p-3 rounded-lg tracking-wide font-semibold cursor-pointer transition ease-in duration-500"
-                  >
-                    Login
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
+        {/* Navigation */}
+        <div className="flex gap-3 sm:gap-6 justify-center items-center text-sm sm:text-base uppercase">
+          <div className="text-black">Home</div>
+          <div className="text-blue-600">{'//'} Login</div>
         </div>
       </div>
+
+      {/* Background Text */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#1a191991] text-4xl sm:text-6xl md:text-8xl font-thin whitespace-nowrap opacity-50 z-0">
+        1920x406
+      </div>
     </div>
+      <div className="flex flex-col gap-6 items-center justify-center bg-white py-8 px-4 sm:px-6 lg:px-8">
+<div className="flex justify-center space-x-4 text-xl">
+          <a href="/dangnhap" className="text-blue-500">Login</a>
+          <span className="text-gray-500">|</span>
+          <a href="/dangki" className="text-gray-900">Register</a>
+        </div>
+        <div className="max-w-[35rem] w-full space-y-8 bg-white p-8  shadow-md">
+      
+        
+        <form className="mt-8 space-y-6">
+        <div className="space-y-6 w-[80%] m-auto">
+        <div>
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              placeholder="Username"
+              className="appearance-none relative block w-full px-2 py-3 border border-gray-300 placeholder-gray-500 
+              text-gray-900  focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10  sm:text-[.7rem] "            />
+          </div>
+          
+          <div>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Password"
+              className="appearance-none relative block w-full px-2 py-3 border border-gray-300 placeholder-gray-500 
+              text-gray-900  focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10  sm:text-[.7rem] "            />
+          </div>
+          
+          <div className="flex items-center justify-between">
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                name="rememberMe"
+                checked={formData.rememberMe}
+                onChange={handleChange}
+                className="h-2 w-2 text-blue-500 focus:ring-blue-500 border-gray-300 rounded"
+              />
+              <span className="ml-2 text-gray-600 text-[.9rem]">Remember me</span>
+            </label>
+            
+            <a href="/forgot-password" className="text-[#000] hover:text-blue-600 text-[.8rem]">
+              Forgot Password?
+            </a>
+          </div>
+          
+          <button
+                type="submit"
+                className="w-32 py-2 px-3 bg-gray-100 hover:bg-gray-200  sm:text-[.7rem] font-semibold  transition duration-200 ease-in-out"
+              >
+                {" "}
+                LOGIN{" "}
+              </button>{" "}
+        </div>
+     
+        </form>
+      </div>
+    </div>
+ </div>
   );
-}
+};
 
 export default Login;

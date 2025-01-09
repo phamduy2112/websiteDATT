@@ -11,8 +11,8 @@ const nextConfig = {
           destination: 'https://api-core.dsp.one/api/:path*', // URL API thực tế
         },
         {
-          source: '/api/login', // Đảm bảo rằng đường dẫn này khớp với API
-          destination: 'http://api-core.dsp.one/login',
+          source: '/:path*', // Đảm bảo rằng đường dẫn này khớp với API
+          destination: 'https://api-core.dsp.one/:path*',
         },
       ];
     },
