@@ -1,9 +1,11 @@
 'use client'
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function AccountPage() {
   const [activeTab, setActiveTab] = useState('DASHBOARD');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   const menuItems = [
     { id: 'DASHBOARD', title: 'DASHBOARD', icon: '📊' },
@@ -17,6 +19,11 @@ export default function AccountPage() {
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
     setIsMobileMenuOpen(false); // Close mobile menu after selection
+    
+    if (tabId === 'LOGOUT') {
+      router.push('/dangnhap'); // Redirect to login page
+    }
+
   };
 
   return (
