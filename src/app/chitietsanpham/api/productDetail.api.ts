@@ -2,7 +2,7 @@ import axios from "axios";
 export const getProductDetailApi = async (productId: number) => {
   try {
     const response = await axios.get(
-      `https://api-core.dsp.one/api/auth/product/${productId}`
+      `https://api-core.dsp.one/api/client/product/${productId}`
     );
     return response.data;
   } catch (error) {

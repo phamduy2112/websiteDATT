@@ -102,7 +102,7 @@ console.log(blog);
                       </div>
                     </div>
                     <h1 className="post-title text-black" style={{ fontWeight: 'bold', fontSize: '20px' }}>
-                      <Link href={`/blog/detail/${item?.id}`}>
+                      <Link href={`/blog/detail`}>
                    {item?.title}
                       </Link>
                     </h1>

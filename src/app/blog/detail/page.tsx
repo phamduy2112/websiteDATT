@@ -5,13 +5,11 @@ import { faCalendarAlt, faSearch, faUser } from "@fortawesome/free-solid-svg-ico
 // import { faFacebook, faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { getBlogDetailApi } from '../../api/Blog';
-interface BlogDetailProps {
-  blogId: number;
-}
+import { getBlogDetailApi } from '../api/Blog';
 
-const BlogDetailPage: React.FC<BlogDetailProps>   = ({ params }) => {
-  const { id } = params;
+
+const BlogDetailPage   = () => {
+  const  id  = 2;
   const blogId = Number(id);
     const [blog, setblog] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);

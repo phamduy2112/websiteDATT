@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next lint --max-warnings=0 || true",
-
     "start": "next start",
     "lint": "next lint"
   },

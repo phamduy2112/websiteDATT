@@ -31,7 +31,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 
   return (
     <div className="border p-1 relative group transition-all duration-500 w-[270px] h-[360px] hover:h-[410px]">
-      <Link href={`/chitietsanpham/${product.id}`} className="w-full h-full">
+      <Link href={`/chitietsanpham`} className="w-full h-full">
         {product.image ? (
           <img
             src={product.image}

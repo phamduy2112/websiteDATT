@@ -147,7 +147,7 @@ console.log(blog);
                   </div>
                   <h1 className="mt-3 text-lg font-bold text-black">
                   <Link 
-                      href={`/blog/detail/${post?.id}`}
+                      href={`/blog/detail`}
                       >{post?.title}</Link>
                   </h1>
                   <p className="mt-3 text-sm text-gray-700">

@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 export default function AccountPage() {
-  const [activeTab, setActiveTab] = useState('ACCOUNT_DETAILS');
+  const [activeTab, setActiveTab] = useState('DASHBOARD');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItems = [
