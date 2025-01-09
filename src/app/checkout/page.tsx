@@ -187,259 +187,283 @@ export default function CheckOut() {
   }, [selectedDistrict]);
 
   return (
-    <div className="w-[80%] mx-auto py-4">
-      <form onSubmit={handleSubmit(handlePlaceOrder)}>
-        <Toogle />
-        <div className="flex w-full justify-between md:flex-row flex-col gap-4">
-          <div className="billing-info-wrap w-full custom:w-[55%] text-[.8rem] text-black p-[2rem]">
-            <h3 className="text-[24px] font-semibold text-black mb-6">
-              Billing Details
-            </h3>
-
-            <div className="w-[100%] flex flex-col gap-4">
-              {/* Full Name */}
-              <div>
-                <label className="block text-black">Full Name</label>
-                <Controller
-                  name="fullname"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      {...field}
-                      className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
-                    />
-                  )}
-                />
-                {errors.fullname && (
-                  <p className="text-red-500 text-xs">
-                    {errors.fullname.message}
-                  </p>
-                )}
-              </div>
-              <div>
-                <label className="block text-black">Email Address</label>
-                <Controller
-                  name="email"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      {...field}
-                      className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
-                    />
-                  )}
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-xs">{errors.email.message}</p>
-                )}
-              </div>
-              <div>
-                <label className="block text-black">Phone</label>
-                <Controller
-                  name="phone"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      {...field}
-                      className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
-                    />
-                  )}
-                />
-                {errors.phone && (
-                  <p className="text-red-500 text-xs">{errors.phone.message}</p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-black">Town / City</label>
-                <Controller
-                  name="selectedProvince"
-                  control={control}
-                  render={({ field }) => (
-                    <select
-                      {...field}
-                      className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
-                      onChange={(e) => {
-                        field.onChange(e);
-                        setSelectedProvince(e.target.value); // Cập nhật state khi chọn tỉnh
-                        setSelectedDistrict(""); // Reset huyện
-                        setSelectedWard(""); // Reset xã
-                      }}
-                    >
-                      <option value="">Chọn thành phố</option>
-                      {provinces.map((province) => (
-                        <option key={province.code} value={province.code}>
-                          {province.name}
-                        </option>
-                      ))}
-                    </select>
-                  )}
-                />
-                {errors.selectedProvince && (
-                  <p className="text-red-500 text-xs">
-                    {errors.selectedProvince.message}
-                  </p>
-                )}
-              </div>
-              <div>
-                <label className="block text-black">District</label>
-                <Controller
-                  name="selectedDistrict"
-                  control={control}
-                  render={({ field }) => (
-                    <select
-                      {...field}
-                      className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
-                      onChange={(e) => {
-                        field.onChange(e);
-                        setSelectedDistrict(e.target.value); // Cập nhật state khi chọn huyện
-                        setSelectedWard(""); // Reset xã
-                      }}
-                    >
-                      <option value="">Chọn huyện</option>
-                      {districts.map((district) => (
-                        <option key={district.code} value={district.code}>
-                          {district.name}
-                        </option>
-                      ))}
-                    </select>
-                  )}
-                />
-                {errors.selectedDistrict && (
-                  <p className="text-red-500 text-xs">
-                    {errors.selectedDistrict.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-black">Ward</label>
-                <Controller
-                  name="selectedWard"
-                  control={control}
-                  render={({ field }) => (
-                    <select
-                      {...field}
-                      className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
-                      onChange={(e) => field.onChange(e)}
-                    >
-                      <option value="">Chọn xã</option>
-                      {wards.map((ward) => (
-                        <option key={ward.code} value={ward.code}>
-                          {ward.name}
-                        </option>
-                      ))}
-                    </select>
-                  )}
-                />
-                {errors.selectedWard && (
-                  <p className="text-red-500 text-xs">
-                    {errors.selectedWard.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-black">Address</label>
-                <Controller
-                  name="address"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      {...field}
-                      className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
-                    />
-                  )}
-                />
-                {errors.address && (
-                  <p className="text-red-500 text-xs">
-                    {errors.address.message}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <ToogleSignUp />
-
-            <div className="additional-info-wrap">
-              <h4 className="font-semibold mb-2">Additional information</h4>
-              <div className="additional-info">
-                <label className="block text-black mb-4">Order notes</label>
-                <textarea
-                  className="w-[100%] focus:outline-[#266bf9] border border-gray-200  text-[.8rem]  px-[1rem] py-[.5rem] h-[5.5rem]"
-                  placeholder="Notes about your order, e.g. special notes for delivery. "
-                  name="message"
-                  defaultValue={""}
-                />
-              </div>
-            </div>
-
-            <ToggleAdress />
-          </div>
-
-          <div className="your-order-area w-[70%]  h-[100%] border border-gray-200 bg-[#ebebeb] text-[.8rem] p-[2rem] max-w-full  mx-auto">
-            {/* Nội dung Your Order */}
-            <h3 className="text-[24px] font-semibold text-black">Your order</h3>
-            <div className="your-order-wrap gray-bg-4">
-              <div className="your-order-product-info ">
-                <div className="your-order-top">
-                  <ul className="flex justify-between py-[1.5rem] border border-b-gray-200 border-transparent">
-                    <li className="font-semibold">Product</li>
-                    <li className="font-semibold">Total</li>
-                  </ul>
-                </div>
-                <div className="your-order-middle py-[1.5rem] border border-b-gray-200 border-transparent">
-                  <ul>
-                    {cart.length > 0 ? (
-                      cart.map((item) => (
-                        <li className="flex justify-between" key={item.id}>
-                          <span className="order-middle-left">
-                            {item.name} x {item.quantity}
-                          </span>
-                          <span className="order-price">
-                            ${item.price * item.quantity}
-                          </span>
-                        </li>
-                      ))
-                    ) : (
-                      <li className="text-center">Your cart is empty.</li>
-                    )}
-                  </ul>
-                </div>
-                <div className="your-order-bottom  py-[1.5rem] border border-b-gray-200 border-transparent">
-                  <ul className="flex justify-between">
-                    <li className="your-order-shipping font-semibold">
-                      Shipping
-                    </li>
-                    <li>
-                      {shipping === 0
-                        ? "Free shipping"
-                        : `$${shipping.toFixed(2)}`}
-                    </li>
-                  </ul>
-                </div>
-                <div className="your-order-total font-semibold  py-[1.5rem] border border-b-gray-200 border-transparent">
-                  <ul className="flex justify-between">
-                    <li className="order-total">Total</li>
-                    <li className="text-[#266bf9]">${calculateTotal()}</li>
-                  </ul>
-                </div>
-              </div>
-              <div className="payment-method  py-[1.5rem]">
-                <TooglePay />
-              </div>
-            </div>
-            <div className="Place-order mt-25">
-              <button
-                className="block text-center bg-[#266bf9] text-white py-2 text-[14px] font-semibold w-full"
-                type="submit"
-                onClick={handlePlaceOrder}
-              >
-                PLACE ORDER
-              </button>
-            </div>
-          </div>
+    <div>
+      <div className="breadcrumb-area relative h-[406px] md:h-[300px] sm:h-[260px]">
+        <img
+          src="https://via.placeholder.com/1920x406"
+          alt="Single Product"
+          className="w-full h-full object-cover rounded-[10px]"
+        />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+          <h1 className="text-[60px] font-medium text-black">Checkout</h1>
+          <p className="text-lg text-white">
+            <Link href="/" className="hover:text-[#266bf9]">
+              HOME
+            </Link>{" "}
+            <a className="text-[#266bf9]">// CHECKOUT</a>
+          </p>
         </div>
-      </form>
+      </div>
+      <div className="w-[80%] mx-auto py-4">
+        <form onSubmit={handleSubmit(handlePlaceOrder)}>
+          <Toogle />
+          <div className="flex w-full justify-between md:flex-row flex-col gap-4">
+            <div className="billing-info-wrap w-full custom:w-[55%] text-[.8rem] text-black p-[2rem]">
+              <h3 className="text-[24px] font-semibold text-black mb-6">
+                Billing Details
+              </h3>
+
+              <div className="w-[100%] flex flex-col gap-4">
+                {/* Full Name */}
+                <div>
+                  <label className="block text-black">Full Name</label>
+                  <Controller
+                    name="fullname"
+                    control={control}
+                    render={({ field }) => (
+                      <input
+                        {...field}
+                        className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
+                      />
+                    )}
+                  />
+                  {errors.fullname && (
+                    <p className="text-red-500 text-xs">
+                      {errors.fullname.message}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label className="block text-black">Email Address</label>
+                  <Controller
+                    name="email"
+                    control={control}
+                    render={({ field }) => (
+                      <input
+                        {...field}
+                        className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
+                      />
+                    )}
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-xs">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label className="block text-black">Phone</label>
+                  <Controller
+                    name="phone"
+                    control={control}
+                    render={({ field }) => (
+                      <input
+                        {...field}
+                        className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
+                      />
+                    )}
+                  />
+                  {errors.phone && (
+                    <p className="text-red-500 text-xs">
+                      {errors.phone.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-black">Town / City</label>
+                  <Controller
+                    name="selectedProvince"
+                    control={control}
+                    render={({ field }) => (
+                      <select
+                        {...field}
+                        className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
+                        onChange={(e) => {
+                          field.onChange(e);
+                          setSelectedProvince(e.target.value); // Cập nhật state khi chọn tỉnh
+                          setSelectedDistrict(""); // Reset huyện
+                          setSelectedWard(""); // Reset xã
+                        }}
+                      >
+                        <option value="">Chọn thành phố</option>
+                        {provinces.map((province) => (
+                          <option key={province.code} value={province.code}>
+                            {province.name}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  />
+                  {errors.selectedProvince && (
+                    <p className="text-red-500 text-xs">
+                      {errors.selectedProvince.message}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label className="block text-black">District</label>
+                  <Controller
+                    name="selectedDistrict"
+                    control={control}
+                    render={({ field }) => (
+                      <select
+                        {...field}
+                        className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
+                        onChange={(e) => {
+                          field.onChange(e);
+                          setSelectedDistrict(e.target.value); // Cập nhật state khi chọn huyện
+                          setSelectedWard(""); // Reset xã
+                        }}
+                      >
+                        <option value="">Chọn huyện</option>
+                        {districts.map((district) => (
+                          <option key={district.code} value={district.code}>
+                            {district.name}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  />
+                  {errors.selectedDistrict && (
+                    <p className="text-red-500 text-xs">
+                      {errors.selectedDistrict.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-black">Ward</label>
+                  <Controller
+                    name="selectedWard"
+                    control={control}
+                    render={({ field }) => (
+                      <select
+                        {...field}
+                        className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
+                        onChange={(e) => field.onChange(e)}
+                      >
+                        <option value="">Chọn xã</option>
+                        {wards.map((ward) => (
+                          <option key={ward.code} value={ward.code}>
+                            {ward.name}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  />
+                  {errors.selectedWard && (
+                    <p className="text-red-500 text-xs">
+                      {errors.selectedWard.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-black">Address</label>
+                  <Controller
+                    name="address"
+                    control={control}
+                    render={({ field }) => (
+                      <input
+                        {...field}
+                        className="h-[45px] w-[100%] border border-gray-200 px-4 focus:outline-[#266bf9]"
+                      />
+                    )}
+                  />
+                  {errors.address && (
+                    <p className="text-red-500 text-xs">
+                      {errors.address.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <ToogleSignUp />
+
+              <div className="additional-info-wrap">
+                <h4 className="font-semibold mb-2">Additional information</h4>
+                <div className="additional-info">
+                  <label className="block text-black mb-4">Order notes</label>
+                  <textarea
+                    className="w-[100%] focus:outline-[#266bf9] border border-gray-200  text-[.8rem]  px-[1rem] py-[.5rem] h-[5.5rem]"
+                    placeholder="Notes about your order, e.g. special notes for delivery. "
+                    name="message"
+                    defaultValue={""}
+                  />
+                </div>
+              </div>
+
+              <ToggleAdress />
+            </div>
+
+            <div className="your-order-area w-[70%]  h-[100%] border border-gray-200 bg-[#ebebeb] text-[.8rem] p-[2rem] max-w-full  mx-auto">
+              {/* Nội dung Your Order */}
+              <h3 className="text-[24px] font-semibold text-black">
+                Your order
+              </h3>
+              <div className="your-order-wrap gray-bg-4">
+                <div className="your-order-product-info ">
+                  <div className="your-order-top">
+                    <ul className="flex justify-between py-[1.5rem] border border-b-gray-200 border-transparent">
+                      <li className="font-semibold">Product</li>
+                      <li className="font-semibold">Total</li>
+                    </ul>
+                  </div>
+                  <div className="your-order-middle py-[1.5rem] border border-b-gray-200 border-transparent">
+                    <ul>
+                      {cart.length > 0 ? (
+                        cart.map((item) => (
+                          <li className="flex justify-between" key={item.id}>
+                            <span className="order-middle-left">
+                              {item.name} x {item.quantity}
+                            </span>
+                            <span className="order-price">
+                              ${item.price * item.quantity}
+                            </span>
+                          </li>
+                        ))
+                      ) : (
+                        <li className="text-center">Your cart is empty.</li>
+                      )}
+                    </ul>
+                  </div>
+                  <div className="your-order-bottom  py-[1.5rem] border border-b-gray-200 border-transparent">
+                    <ul className="flex justify-between">
+                      <li className="your-order-shipping font-semibold">
+                        Shipping
+                      </li>
+                      <li>
+                        {shipping === 0
+                          ? "Free shipping"
+                          : `$${shipping.toFixed(2)}`}
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="your-order-total font-semibold  py-[1.5rem] border border-b-gray-200 border-transparent">
+                    <ul className="flex justify-between">
+                      <li className="order-total">Total</li>
+                      <li className="text-[#266bf9]">${calculateTotal()}</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="payment-method  py-[1.5rem]">
+                  <TooglePay />
+                </div>
+              </div>
+              <div className="Place-order mt-25">
+                <button
+                  className="block text-center bg-[#266bf9] text-white py-2 text-[14px] font-semibold w-full"
+                  type="submit"
+                  onClick={handlePlaceOrder}
+                >
+                  PLACE ORDER
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

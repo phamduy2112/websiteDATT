@@ -130,12 +130,12 @@ const Cart: React.FC<cart> = () => {
       <div className="w-[80%] mx-auto py-4">
         <h1 className="text-[24px] font-semibold py-3">Your cart items</h1>
         <table className="w-[100%] table-cart">
-          <thead className="w-[100%] bg-[#ebebeb] text-black h-[3rem] text-center">
+          <thead className="w-[100%] bg-[#ebebeb] text-black h-[76px] text-center">
             <tr className=" text-[16px]">
               <th>IMAGE</th>
               <th>PRODUCT NAME</th>
-              <th>UNTIL PRICE</th>
-              <th>QTY</th>
+              <th className="text-left">UNTIL PRICE</th>
+              <th className="text-left">QTY</th>
               <th>SUBTOTAL</th>
               <th>ACTION</th>
             </tr>
@@ -204,16 +204,16 @@ const Cart: React.FC<cart> = () => {
         </table>
 
         <div className="flex flex-wrap justify-between py-[1rem] mt-4 mb-8">
-          <button className="py-[0.8rem] px-[3rem] bg-[#ebebeb] text-[#000000] font-semibold text-[14px] flex justify-center items-center transition-all hover:bg-[#266bf9] hover:text-white w-full mb-[0.5rem] sm:w-auto">
+          <button className="py-[0.8rem] px-[3rem] bg-[#ebebeb] text-[#000000] font-semibold text-[14px] flex justify-center h-[49px] items-center transition-all hover:bg-[#266bf9] hover:text-white w-full mb-[0.5rem] sm:w-auto">
             CONTINUE SHOPPING
           </button>
           <div className="flex gap-[1rem] w-full  sm:w-auto flex-wrap">
-            <button className="py-[0.8rem] px-[3rem] bg-[#ebebeb] text-[#000000] font-semibold text-[14px] flex justify-center items-center transition-all hover:bg-[#266bf9] hover:text-white w-full mb-[0.5rem] sm:w-auto">
+            <button className="py-[0.8rem] px-[3rem] bg-[#ebebeb] text-[#000000] font-semibold text-[14px] flex justify-center h-[49px] items-center transition-all hover:bg-[#266bf9] hover:text-white w-full mb-[0.5rem] sm:w-auto">
               UPDATE SHOPPING CART
             </button>
             <button
               onClick={handleClearCart}
-              className="py-[0.8rem] px-[3rem] bg-[#266bf9] text-white font-semibold text-[14px] flex justify-center items-center transition-all hover:bg-[#000000] hover:text-white mb-[0.5rem]  w-full sm:w-auto"
+              className="py-[0.8rem] px-[3rem] bg-[#266bf9] text-white font-semibold text-[14px] flex justify-center items-center h-[49px] transition-all hover:bg-[#000000] hover:text-white mb-[0.5rem] ml-[10px]  w-full sm:w-auto"
             >
               CLEAR SHOPPING CART
             </button>
