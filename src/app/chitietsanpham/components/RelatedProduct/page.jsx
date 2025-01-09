@@ -14,7 +14,7 @@ const RelatedProduct = () => {
   const products = [
     {
       id: 1,
-      image: "https://via.placeholder.com/270x274",
+      image: "https://template-intern.l5elb4sxvvqkvl.flashvps.xyz/Tech/hmart-electronics-ecommerce-html-template-2023-11-27-05-11-08-utc/hmart/assets/images/product-image/1.webp",
       name: "Modern Smart Phone",
       price: "$38.50",
       sale: "Sale 10%",
@@ -23,7 +23,7 @@ const RelatedProduct = () => {
     },
     {
       id: 2,
-      image: "https://via.placeholder.com/270x274",
+      image: "https://template-intern.l5elb4sxvvqkvl.flashvps.xyz/Tech/hmart-electronics-ecommerce-html-template-2023-11-27-05-11-08-utc/hmart/assets/images/product-image/1.webp",
       name: "Bluetooth Headphone",
       price: "$38.50",
       sale: "Sale 10%",
@@ -32,7 +32,7 @@ const RelatedProduct = () => {
     },
     {
       id: 3,
-      image: "https://via.placeholder.com/270x274",
+      image: "https://template-intern.l5elb4sxvvqkvl.flashvps.xyz/Tech/hmart-electronics-ecommerce-html-template-2023-11-27-05-11-08-utc/hmart/assets/images/product-image/1.webp",
       name: "Smart Music Box",
       price: "$38.50",
       sale: "Sale",
@@ -41,7 +41,7 @@ const RelatedProduct = () => {
     },
     {
       id: 4,
-      image: "https://via.placeholder.com/270x274",
+      image: "https://template-intern.l5elb4sxvvqkvl.flashvps.xyz/Tech/hmart-electronics-ecommerce-html-template-2023-11-27-05-11-08-utc/hmart/assets/images/product-image/1.webp",
       name: "Air Pods 256K Black",
       price: "$38.50",
       sale: "Sale",
