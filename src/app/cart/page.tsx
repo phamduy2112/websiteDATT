@@ -291,7 +291,9 @@ const Cart: React.FC<cart> = () => {
                     className="w-[100%] border border-black py-[.3rem] px-3"
                   />
                   <button
-                    className="cart-btn-2 mt-[1rem] hover hover:bg-[#000000]  w-full text-center block "
+                    className="cart-btn-2
+                    
+                    mt-[1rem] hover hover:bg-[#000000]  w-full text-center block "
                     type="submit"
                   >
                     Apply Coupon

@@ -256,45 +256,33 @@ const RelatedProduct = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: true,
-    prevArrow: <CustomPrevArrow />, // Custom nút trái
-    nextArrow: <CustomNextArrow />, // Custom nút phải
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
     centerMode: false,
     centerPadding: "0",
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1400,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "90px",
+          slidesToShow: 3, // Hiển thị 2 sản phẩm
+          slidesToScroll: 1, // Cuộn 1 sản phẩm mỗi lần
         },
       },
+ 
       {
-        breakpoint: 820,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "90px",
-        },
-      },
-      {
-        breakpoint: 768,
+        breakpoint: 900,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "90px",
+   
         },
       },
       {
-        breakpoint: 428,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "10%",
+   
         },
       },
     ],
@@ -305,7 +293,7 @@ const RelatedProduct = () => {
       <Slider {...settings}>
         {products?.map((product) => (
           <div
-            className="border p-2 relative group transition-all duration-500 w-[270px] h-[382px] hover:h-[450px] rounded-lg"
+            className="border p-2 relative group transition-all duration-500 w-[24%] h-[382px] hover:h-[450px] rounded-lg"
             key={product.id}
           >
             {product.image ? (
