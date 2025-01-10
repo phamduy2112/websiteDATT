@@ -63,10 +63,13 @@ function Footer() {
   </div>
   {/* Bottom Copyright */}
   <div className="bg-blue-200 py-4 mt-10">
-    <div className="container mx-auto sm:flex justify-between items-center text-sm px-4">
+  <div className="flex space-x-4 justify-center items-center cursor-pointer m-auto md:hidden">
+        <img src="https://template-intern.l5elb4sxvvqkvl.flashvps.xyz/Tech/hmart-electronics-ecommerce-html-template-2023-11-27-05-11-08-utc/hmart/assets/images/icons/payment.png" alt="" />
+      </div>
+    <div className="container mx-auto sm:flex justify-between items-center text-sm px-4 text-center sxm:mt-[.5rem]">
       <p>© 2022 <span className="text-blue-500">Hmart</span> Made with <span className="text-blue-500">♥</span> by Codecarnival.</p>
       {/* Payment Icons */}
-      <div className="flex space-x-4 justify-center items-center cursor-pointer">
+      <div className="flex space-x-4 justify-center items-center cursor-pointer sxm:hidden md:block">
         <img src="https://template-intern.l5elb4sxvvqkvl.flashvps.xyz/Tech/hmart-electronics-ecommerce-html-template-2023-11-27-05-11-08-utc/hmart/assets/images/icons/payment.png" alt="" />
       </div>
     </div>
