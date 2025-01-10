@@ -79,11 +79,11 @@ function TrangChu() {
        </div>
        <FeaturedOffers products={products} /> 
 
-        <div className="bg-gray-300 mt-[3rem] w-full h-[456px] flex flex-col justify-center items-center text-center">
-      <h1 className="text-white text-3xl font-light">Smart Fashion</h1>
-      <h2 className="text-white text-5xl font-bold mt-2">With Smart Devices</h2>
-      <div className="text-gray-700 text-6xl font-bold mt-4">1920x456</div>
-      <button className="mt-6 px-6 py-3 bg-blue-500 text-white text-lg font-semibold rounded hover:bg-blue-600">
+        <div className="bg-[#acabab] relative mt-[3rem] w-full h-[456px] flex flex-col justify-center items-center text-center">
+      <h1 className="text-white text-2xl font-light z-10">Smart Fashion</h1>
+      <h2 className="text-white text-4xl font-bold mt-2 z-10">With Smart Devices</h2>
+      <div className="text-gray-700 text-6xl font-bold mt-4 absolute z-0">1920x456</div>
+      <button className="mt-6 px-3 py-3 border border-white z-10 text-white text-[.8rem] font-semibold rounded-2xl hover:border-none hover:bg-blue-600">
         Shop All Devices
       </button>
     </div>

@@ -68,7 +68,7 @@ const FeaturedOffers = ({ products }) => {
           <div key={index} className="px-2"> {/* Mỗi sản phẩm là một slide */}
             <div className="flex border rounded-lg shadow-lg max-w-full h-[20rem]">
               {/* Image + Button */}
-              <div className="relative flex-shrink-0 w-1/2 bg-gray-300 flex justify-center items-center">
+              <div className="relative flex-shrink-0 w-1/2 bg-[#acabab] flex justify-center items-center">
                 <span className="text-2xl font-bold">270x380</span>
               </div>
 
