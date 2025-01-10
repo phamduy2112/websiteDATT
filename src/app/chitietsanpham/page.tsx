@@ -8,11 +8,34 @@ import RelatedProduct from "./components/RelatedProduct/page";
 import { getProductDetailApi } from "./api/productDetail.api";
 
 
+
 const ProductDetail = () => {
+
   const [product, setProduct] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const  id  = 10;
   const productId = Number(id);
+  const CustomPrevArrow = ({ onClick }) => {
+    return (
+      <button
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-200 transition-all"
+        onClick={onClick}
+      >
+        &lt;
+      </button>
+    );
+  };
+
+  const CustomNextArrow = ({ onClick }) => {
+    return (
+      <button
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-200 transition-all"
+        onClick={onClick}
+      >
+        &gt;
+      </button>
+    );
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -56,11 +79,31 @@ const ProductDetail = () => {
         <div className="flex flex-wrap mt-4">
           {/* Cột ảnh sản phẩm */}
           <div className="w-full md:w-1/2 p-4">
-            <img
+          <div>
+              <img
               src="https://template-intern.l5elb4sxvvqkvl.flashvps.xyz/Tech/hmart-electronics-ecommerce-html-template-2023-11-27-05-11-08-utc/hmart/assets/images/product-image/zoom-image/1.webp"
               className="w-full h-auto rounded-[10px]"
               alt="Product image"
             />
+          </div>
+          <div className="flex justify-center space-x-2 mt-4">
+              <img
+                src="https://via.placeholder.com/127x127"
+                alt="Thumbnail 1"
+                className="w-1/4 h-auto cursor-pointer rounded-[10px]"
+              />
+              <img
+                src="https://via.placeholder.com/127x127"
+                alt="Thumbnail 2"
+                className="w-1/4 h-auto cursor-pointer rounded-[10px]"
+              />
+              <img
+                src="https://via.placeholder.com/127x127"
+                alt="Thumbnail 3"
+                className="w-1/4 h-auto cursor-pointer rounded-[10px]"
+              />
+            </div>
+
           </div>
 
           {/* Cột thông tin sản phẩm */}
