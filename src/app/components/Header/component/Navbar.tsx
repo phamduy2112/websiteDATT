@@ -62,7 +62,7 @@ const Navbar = () => {
             </button>
             {isProductHovered && (
               <div
-                className="absolute left-0 top-full z-20 bg-white shadow-lg p-4 mt-1 rounded-lg w-[1000px]"
+                className="absolute left-[-10rem] top-full z-20 bg-white shadow-lg p-4 mt-1 rounded-lg w-[1000px]"
                 onMouseEnter={handleMouseEnterProduct}
                 onMouseLeave={handleMouseLeaveProduct}
               >

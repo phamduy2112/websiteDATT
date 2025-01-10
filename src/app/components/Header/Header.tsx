@@ -129,7 +129,7 @@ const Header = () => {
                 />
               </svg>
             </button>
-            <span className="absolute -top-2 -right-2 bg-blue-500 text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            <span className="absolute top-2 -right-2 bg-blue-500 text-xs rounded-full w-5 h-5 flex items-center justify-center">
               01
             </span>
           </div>

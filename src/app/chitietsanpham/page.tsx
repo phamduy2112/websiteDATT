@@ -11,7 +11,7 @@ import { getProductDetailApi } from "./api/productDetail.api";
 const ProductDetail = () => {
   const [product, setProduct] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
-  const  id  = 5;
+  const  id  = 10;
   const productId = Number(id);
 
   useEffect(() => {
