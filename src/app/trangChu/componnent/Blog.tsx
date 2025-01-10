@@ -36,6 +36,11 @@ console.log(blog);
   return (
     <div className="blog-posts-area flex justify-center mt-10">
     <div className="container ">
+      <div className='text-center'>
+      <h3 className='text-3xl font-bold text-center py-4'>Latest Blog</h3>
+      <p className="text-gray-500 text-center mb-3">
+        There are many variations of passages of Lorem Ipsum available</p>
+      </div>
       <div className="flex justify-content-center flex-wrap md:flex-row">
         {/* Example Blog Post Item */}
         {blog.slice(0,2).map((item, index) => (

@@ -57,8 +57,8 @@ const FeaturedOffers = ({ products }) => {
   return (
     <div className="container mx-auto">
       {/* Tiêu đề */}
-      <h2 className="text-3xl font-bold text-center py-7">Featured Offers</h2>
-      <p className="text-gray-500 text-center mb-8">
+      <h2 className="text-3xl font-bold text-center py-4">Featured Offers</h2>
+      <p className="text-gray-500 text-center mb-3">
         There are many variations of passages of Lorem Ipsum available
       </p>
 
